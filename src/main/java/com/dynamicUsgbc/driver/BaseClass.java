@@ -62,7 +62,7 @@ public class BaseClass {
 	public void setup(String browserName,String environment) throws InterruptedException, IOException{
 
 		//Excel path configuration
-		//data= new XlsReader(System.getProperty("user.dir")+"/ArcTest.xlsx"); 
+		data= new XlsReader(System.getProperty("user.dir")+"/ArcTest.xlsx"); 
 		
 		 
 		//selecting browser based on parameter from TestNG.xml
