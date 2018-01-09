@@ -52,17 +52,7 @@ public class BaseClass {
 	public JavascriptExecutor js;
 	public String testName;
 	public String testScreenShotDirectory;
-	public String url ="https://new.usgbc.org/";
-    public static String currentDir = System.getProperty("user.dir");
-	public String parentScreenShotsLocation = currentDir + "\\ScreenShots\\";
-	public String parentDifferencesLocation = currentDir + "\\Differences\\";
-	public static String baselineScreenShotPath;
-	public static String actualScreenShotPath;
-	public static String differenceScreenShotPath;
-	public static File baselineImageFile;
-	public static File actualImageFile;
-	public static File differenceImageFile;
-	public static File differenceFileForParent;
+
 
 
 	
@@ -70,13 +60,6 @@ public class BaseClass {
 	@BeforeClass(alwaysRun=true)
 	@Parameters({"browserName","environment"})
 	public void setup(String browserName,String environment) throws InterruptedException, IOException{
-		 js = (JavascriptExecutor) driver;
-	     //Create screenshot and differences folders if they are not exist
-	     createFolder(parentScreenShotsLocation);
-	     createFolder(parentDifferencesLocation);
-	     //Clean Differences Root Folder
-	     File differencesFolder = new File(parentDifferencesLocation);
-	     FileUtils.cleanDirectory(differencesFolder);
 
 		//Excel path configuration
 		//data= new XlsReader(System.getProperty("user.dir")+"/ArcTest.xlsx"); 
@@ -194,90 +177,6 @@ public class BaseClass {
 		
 	
 	}
-	
-	
-		@BeforeMethod
-	    public void setupTestMethod (Method method) {
-	        //Get the test name to create a specific screenshot folder for each test.
-        testName = method.getName();
-        System.out.println("Test Name: " + testName + "\n");
-
-        //Create a specific directory for a test
-        testScreenShotDirectory = parentScreenShotsLocation + testName + "\\";
-        createFolder(testScreenShotDirectory);
-
-        //Declare element screenshot paths
-        //Concatenate with the test name.
-        declareScreenShotPaths(testName+"_Baseline.png", testName+"_Actual.png", testName + "_Diff.png");
-		}
-	
-		//Create Folder Method
-	    public void createFolder (String path) {
-	        File testDirectory = new File(path);
-	        if (!testDirectory.exists()) {
-	            if (testDirectory.mkdir()) {
-	                System.out.println("Directory: " + path + " is created!" );
-	            } else {
-	                System.out.println("Failed to create directory: " + path);
-	            }
-	        } else {
-	            System.out.println("Directory already exists: " + path);
-	        }
-	    }
-
-		
-	    public long height() {
-	    	JavascriptExecutor js = ((JavascriptExecutor) driver);
-	    	long value = (long) js.executeScript("return document.documentElement.clientWidth");
-	    	System.out.println(value);
-	    	return value;
-	    }
-	    
-	    
-	    public long width() {
-	    	JavascriptExecutor js = ((JavascriptExecutor) driver);
-	    	long value = (long) js.executeScript("return document.body.clientHeight");
-	    	System.out.println(value);
-	    	return value;
-	    }
-		//Take screenshot with Ashot
-		public static Screenshot takeScreenshot () throws IOException {
-			   System.out.println("Hi Test 1");
-			   TakesScreenshot ts = (TakesScreenshot)driver;
-		   	   File Source = ts.getScreenshotAs(OutputType.FILE);
-		   	   String Dest = currentDir + "\\Differences\\ "+ "Abhi.png";
-		   	   File Destination = new File(Dest);
-		   	   FileUtils.copyFile(Source, Destination);
-			   //Take screenshot with Ashot
-		       Screenshot elementScreenShot = new AShot()
-		        		.coordsProvider(new WebDriverCoordsProvider())
-		    		    .takeScreenshot(driver); 
-		        //Print element size
-		        String size = "Height: " + elementScreenShot.getImage().getHeight() + "\n" +
-		                "Width: " + elementScreenShot.getImage().getWidth() + "\n";
-		        System.out.print("Size: " + size);
-		        return elementScreenShot;
-		    }
-		
-		
-		  //Write
-	  
-	   	
-		//Screenshot paths
-		public void declareScreenShotPaths (String baseline, String actual, String diff) {
-		    //BaseLine, Actual, Difference Photo Paths
-		    baselineScreenShotPath = testScreenShotDirectory + baseline;
-		    actualScreenShotPath = testScreenShotDirectory + actual;
-		    differenceScreenShotPath = testScreenShotDirectory + diff;
-		
-		    //BaseLine, Actual Photo Files
-		    baselineImageFile = new File(baselineScreenShotPath);
-		    actualImageFile = new File(actualScreenShotPath);
-		    differenceImageFile = new File (differenceScreenShotPath);
-		
-		    //For copying difference to the parent Difference Folder
-		    differenceFileForParent = new File (parentDifferencesLocation + diff);
-		}
 	
 	
 	    @AfterClass(alwaysRun = true)
