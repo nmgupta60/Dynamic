@@ -12,15 +12,15 @@ import com.dynamicUsgbc.ReusableMethods.ReusableMethodsCommunity;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
 
-public class CommunityRegistrationFlowTest extends BaseClass {
+public class CommunityRegPageErrorVerifyTest extends BaseClass {
 	
 	@Test
-	@Parameters({"rowNum" ,"CommunityRegistrationSheet","SignInSheet","PaymentSheet"})
-	public void CommunityRegistrationFlow(int rowNum, String CommRegSheet, String signinSheet, String paymentSheet) throws IOException {
+	@Parameters({"rowNum" ,"CommunityRegistrationSheet","SignInSheet"})
+	public void CommunityRegPaymentPageErrorVerify(int rowNum, String CommRegSheet, String signinSheet) throws IOException {
 		
 		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
 		CommonMethod.ExtentReportConfig();
-		CommonMethod.test = CommonMethod.extent.startTest("Community Registration", "Verifies if Community Registration is done successfully").assignCategory("CheckCommunityRegistration");
+		CommonMethod.test = CommonMethod.extent.startTest("CommunityReg PaymentPage Error Verify", "Verifies Errors displayed").assignCategory("CheckErrors");
 		CommonMethod.setUrl(CommunityRegistrationUrl);
 		
 		ReusableMethodsCommunity reuse = new ReusableMethodsCommunity();
@@ -30,7 +30,7 @@ public class CommunityRegistrationFlowTest extends BaseClass {
 			
 			reuse.CommunityRegistration(rowNum, CommRegSheet);
 			reuse.CommunitySignIn(rowNum, signinSheet);
-			reusePay.PaymentByCC(rowNum, paymentSheet);
+			reusePay.CommunityRegistrationPaymentPageErrorMessageVerify();
             } 
 		
 		catch (Throwable t) {
@@ -38,7 +38,7 @@ public class CommunityRegistrationFlowTest extends BaseClass {
 			Error e1 = new Error(t.getMessage());
 			e1.setStackTrace(t.getStackTrace());
 			CommonMethod.testlogError( "<pre>" + e1.toString() + "</pre>");
-			CommonMethod.takeScreenshot("CommunityRegistrationFlow");
+			CommonMethod.takeScreenshot("CommunityRegPaymentPageErrorVerify");
 			throw e1;
 		}
 	}
