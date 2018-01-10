@@ -52,6 +52,15 @@ public class BaseClass {
 	public JavascriptExecutor js;
 	public String testName;
 	public String testScreenShotDirectory;
+	public String CommunityRegistrationUrl = "/community/registration";
+	public String DonationsHaitiUrl = "/donations/center/online/haiti";
+	public String DonationsUsgbcUrl = "/donations/center/online/usgbc";
+	public String DonationsCfgsUrl = "/donations/center/mail/cfgs";
+	public String DonationsMyGreenAppleUrl = "/donations/center/mail/mygreenapple";
+	public String SponsorshipUrl = "/sponsorship/content";
+	public String ExamRegistrationUrl = "/register-exams/exam";
+	public String StoreUrl = "/store";
+	
 
 
 
@@ -62,7 +71,7 @@ public class BaseClass {
 	public void setup(String browserName,String environment) throws InterruptedException, IOException{
 
 		//Excel path configuration
-		data= new XlsReader(System.getProperty("user.dir")+"/ArcTest.xlsx"); 
+		data= new XlsReader(System.getProperty("user.dir")+"/DynamicUsgbc.xlsx"); 
 		
 		 
 		//selecting browser based on parameter from TestNG.xml

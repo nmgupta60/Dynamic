@@ -1,6 +1,12 @@
 package com.dynamicUsgbc.ReusableMethods;
 
 import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
@@ -75,6 +81,48 @@ public class ReusableMethodPayment extends BaseClass {
 			
 			
 		
+		}
+		
+		public void CommunityRegistrationErrorMessage () throws InterruptedException
+		{
+			String[] CommunityRegistrationErrorMsg = { 
+
+				    "Street address field is required.",
+				    "Street address line 2 field is required.",
+				    "City field is required.",
+				    "State field is required.",
+				    "Zip code field is required.",
+				    "Please enter Name on the card.",
+				    "Please enter card number.",
+				    "Please enter Security code.",
+				    "Please enter the expiry month on your card.",
+				    "Please enter the expiry year on your card."
+
+	               };
+			 
+			 Thread.sleep(3000);
+			 JavascriptExecutor js = ((JavascriptExecutor) driver);
+			 //Thread.sleep(3000);
+		     js.executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.xpath(".//*[@id='edit-address']/div[3]/div[1]/label")));
+		     Thread.sleep(3000);
+		     List<WebElement> ErrorMsgSize =  driver.findElements(By.className("input-error-desc"));
+		        System.out.println("***** "+ErrorMsgSize.size());
+		        int i = 0;
+		        for (WebElement ErrorMsg : ErrorMsgSize) {
+		            System.out.println("**** "+ErrorMsg.getText());
+		            if(ErrorMsg.getText().equals("")){
+		               
+		            	continue;
+		            }
+		            else
+		                Assert.assertTrue(ErrorMsg.getText().contains(CommunityRegistrationErrorMsg[i]));
+		                		//equalsIgnoreCase(CommunityRegistrationErrorMsg[i]));
+		            
+		            i++;
+		        } 
+			
+		    
+			 
 		}
 	
 }

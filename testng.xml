@@ -2,20 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="VisualTest">
     
-  <test name="USGBCVisualTest">
+  <test name="USGBC">
     <parameter name="browserName"  value="firefox"/>
     <parameter name="environment"  value="staging"/>
+    <parameter name="rowNum" value="2"/>
+    <parameter name="CommunityRegistrationSheet" value="CommunityRegistration"/>
     
     <classes>
-      <class name="com.usgbc.testcases.LandingPage.USGBCLandingPageTest"/>
-      <class name="com.usgbc.testcases.LandingPage.USGBCHeaderLinkEducationTest"/>
-      <class name="com.usgbc.testcases.LandingPage.USGBCHeaderLinkDirectoryTest"/>
-      <class name="com.usgbc.testcases.LandingPage.USGBCHeaderLinkResourcesTest"/>
-      <class name="com.usgbc.testcases.LandingPage.USGBCHeaderLinkArticlesTest"/>
-      <class name="com.usgbc.testcases.LandingPage.USGBCHeaderLinkCredentialsTest"/>
-      <class name="com.usgbc.testcases.LandingPage.USGBCHeaderLinkLeedTest"/>
-      <class name="com.usgbc.testcases.LandingPage.USGBCHeaderLinkStoreTest"/>
-      <class name="com.usgbc.testcases.LandingPage.USGBCHeaderLinkJoinTest"/>
+      <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/>
+    
     </classes>
   </test> <!-- USGBCVisualTest -->
 </suite> <!-- VisualTest -->
