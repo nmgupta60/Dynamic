@@ -413,6 +413,11 @@ public class CommonMethod extends BaseClass  {
         js.executeScript("arguments[0].scrollIntoView(true);",findElement(objectLocater));
     }
     
+    public static void setUrl(String extension) {
+    	
+    	driver.get(driver.getCurrentUrl() + extension);
+    }
+    
     public static boolean isFileDownloaded(String downloadPath, String fileName) {
 		boolean flag = false;
 	    File dir = new File(downloadPath);
