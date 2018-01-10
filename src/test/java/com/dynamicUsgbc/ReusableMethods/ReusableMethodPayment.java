@@ -49,6 +49,7 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass", "Entering Zip Code");
 		CommonMethod.click("PaymentSubmitButton");
 		CommonMethod.testlog("Pass", "Clicking on Next button");
+		Thread.sleep(25000);
 
 	}
 
@@ -77,7 +78,7 @@ public class ReusableMethodPayment extends BaseClass {
 
 	}
 
-	public void CommunityRegistrationErrorMessage() throws InterruptedException, IOException {
+	public void CommunityRegistrationPaymentPageErrorMessageVerify() throws InterruptedException, IOException {
 		String[] CommunityRegistrationErrorMsg = {
 
 				"Please enter Name on the card.", "Please enter card number.",

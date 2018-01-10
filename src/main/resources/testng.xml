@@ -8,10 +8,11 @@
     <parameter name="rowNum" value="2"/>
     <parameter name="CommunityRegistrationSheet" value="CommunityRegistration"/>
     <parameter name="SignInSheet" value="SignIn"/>
+     <parameter name="PaymentSheet" value="Payment"/>
     
     <classes>
-      <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/>
+      <class name="com.dynamicUsgbc.testcases.CommunityRegLoggedInUserFlowTest"/>
     
     </classes>
-  </test> <!-- USGBCVisualTest -->
-</suite> <!-- VisualTest -->
+  </test> 
+</suite>
