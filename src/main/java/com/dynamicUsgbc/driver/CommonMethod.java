@@ -247,12 +247,12 @@ public class CommonMethod extends BaseClass  {
 	
 	public static void assertEqualsmessage(String objectLocator,String expected, String message) throws IOException{
 		String Actual = CommonMethod.getText(objectLocator);
-		Assert.assertEquals(getText(objectLocator), expected, message+ " found " + Actual + " but expected "+ expected);
+		Assert.assertEquals(Actual, expected, message);
 	}
 	
 	public static void assertEqualsMessage(String actual,String expected, String message) throws IOException{
 		
-		Assert.assertEquals(actual, expected, message+ " found " + actual + " but expected "+ expected);
+		Assert.assertEquals(actual, expected, message);
 	}
 	
     public static void assertEqualsmessageAttributevalue(String objectLocator,String expected, String message) throws IOException{
