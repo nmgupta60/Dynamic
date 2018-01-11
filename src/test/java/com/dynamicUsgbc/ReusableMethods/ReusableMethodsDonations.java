@@ -1,6 +1,10 @@
 package com.dynamicUsgbc.ReusableMethods;
 
 import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
@@ -85,10 +89,19 @@ public class ReusableMethodsDonations extends BaseClass{
 			
 			
 			CommonMethod.assertEqualsmessage("ReceiptDonationAmount", amount, "Amount is not correct");
+			CommonMethod.testlog("Pass","Donation Amount is correct");
 			CommonMethod.assertEqualsmessage("ReceiptDonationDonatedOn", CommonMethod.getTodaysDate(), "Date is not correct");
+			CommonMethod.testlog("Pass","Donation date is correct");
 			CommonMethod.assertEqualsmessage("ReceiptDonationDonatedBy", donorName, "Donor Name is not correct");
+			CommonMethod.testlog("Pass","Donor Name is correct");
 			CommonMethod.assertEqualsmessage("ReceiptDonationOnBehalfOf", dedicatedTo, "On Behalf of Name is not correct");
+			CommonMethod.testlog("Pass","Donation on behalf of is correct");
 			CommonMethod.assertEqualsmessage("ReceiptDonationeCard", message, "Donation Message is not correct");
+			CommonMethod.testlog("Pass","Message on behalf of donation is correct");
 		}
 	
+		
+		
+		
+		
 }

@@ -93,6 +93,7 @@ public class ReusableMethodPayment extends BaseClass {
 		
 		String ExpectedMessage = "Thank you!";
 		CommonMethod.assertEqualsmessage("SuccessfulPayment", ExpectedMessage, "Payment is not succesful");
+		CommonMethod.testlog("Pass","Payment made successfully");
 	}
 
 	public void CommunityRegistrationPaymentPageErrorMessageVerify() throws InterruptedException, IOException {
