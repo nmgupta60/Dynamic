@@ -31,6 +31,7 @@ public class SponsorshipFlowTest  extends BaseClass{
 			
 			reuse.Sponsorship(rowNum, sponsorshipSheet);
 			reuseComm.SignIn(rowNum, SignInSheet);
+			reusePay.verifySponsershipPaymentDetails(rowNum, sponsorshipSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();
 			//reuse.VerifyReceiptDonation(rowNum, sponsorshipSheet);

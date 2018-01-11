@@ -32,11 +32,11 @@ public class StoreFlowTest extends BaseClass {
 		try {
 			
 			reuse.AddProductInCart();
-			reuse.UpdateProductInCart();
+			reuse.UpdateProductInCart(rowNum,paymentSheet);
 			reuse.VerifyPriceInCart(rowNum, storeSheet);
 			reuse.ClickCheckout();
 			reuse.ShippingAddressProduct(rowNum, storeSheet);
-			reuseSign.CommunitySignIn(rowNum, signInSheet);
+			reuseSign.SignIn(rowNum, signInSheet);
 			reusePay.verifyStorePaymentDetails(rowNum, storeSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();

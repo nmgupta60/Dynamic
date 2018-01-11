@@ -30,6 +30,7 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		CommonMethod.testlog("Pass", "Selecting the community Name frm the Dropdown");
 		CommonMethod.click("checkEvents");
 		CommonMethod.testlog("Pass", "Clciking on Sponsorship Type");
+		Thread.sleep(2000);
 		CommonMethod.sendKeys("sponsorAmount", amount);
 		CommonMethod.testlog("Pass", "Entering the scholarship amount");
 		CommonMethod.sendKeys("startDate", startDate);
@@ -42,6 +43,7 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		CommonMethod.testlog( "Pass","Entering Addrress 1");
 		CommonMethod.sendKeys("CommunityAdd2", street2);
 		CommonMethod.testlog( "Pass","Entering Address 2");
+		Thread.sleep(2000);
 		CommonMethod.sendKeys("CommunityCity", city);
 		CommonMethod.testlog( "Pass","Ebtering City Name");
 		CommonMethod.selectdropdown("CommunityState", state);
