@@ -75,5 +75,20 @@ public class ReusableMethodsDonations extends BaseClass{
 	    CommonMethod.assertcontainsmessage("VerifyTextOnPayment", "Donation - Confirmation", "Didn't Redirected to paymnet page");
 	    CommonMethod.testlog( "Pass", " Welcome to Payment Page");
 	}
+		
+		public void VerifyReceiptDonation(int rowNum, String sheetName) throws IOException {
+			
+			String amount      = data.getCellData(sheetName, "Amount", rowNum);
+			String donorName   = data.getCellData(sheetName, "DonorName", rowNum);
+			String dedicatedTo   = data.getCellData(sheetName, "DedicatedTo", rowNum);
+			String message   = data.getCellData(sheetName, "Message", rowNum);
+			
+			
+			CommonMethod.assertEqualsmessage("ReceiptDonationAmount", amount, "Amount is not correct");
+			CommonMethod.assertEqualsmessage("ReceiptDonationDonatedOn", CommonMethod.getTodaysDate(), "Date is not correct");
+			CommonMethod.assertEqualsmessage("ReceiptDonationDonatedBy", donorName, "Donor Name is not correct");
+			CommonMethod.assertEqualsmessage("ReceiptDonationOnBehalfOf", dedicatedTo, "On Behalf of Name is not correct");
+			CommonMethod.assertEqualsmessage("ReceiptDonationeCard", message, "Donation Message is not correct");
+		}
 	
 }

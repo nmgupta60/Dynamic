@@ -49,11 +49,11 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass", "Entering Zip Code");
 		CommonMethod.click("PaymentSubmitButton");
 		CommonMethod.testlog("Pass", "Clicking on Next button");
-		Thread.sleep(5000);
+		Thread.sleep(55000);
 
 	}
 
-	public void verifyPaymentDetails(int rowNum, String sheetName) throws IOException, InterruptedException {
+	public void verifyCommRegPaymentDetails(int rowNum, String sheetName) throws IOException, InterruptedException {
 
 		String communityName = data.getCellData(sheetName, "CommunityName", rowNum);
 		String country = data.getCellData(sheetName, "CountryCode", rowNum);

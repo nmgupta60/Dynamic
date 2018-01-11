@@ -32,6 +32,8 @@ public class DonationOnlineCfgsTest extends BaseClass {
 			reuse.DonationByOnline(rowNum, donationsheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();
+			reuse.VerifyReceiptDonation(rowNum, donationsheet);
+			
             } 
 		
 		catch (Throwable t) {

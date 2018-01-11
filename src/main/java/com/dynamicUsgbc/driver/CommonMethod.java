@@ -221,6 +221,13 @@ public class CommonMethod extends BaseClass  {
 		
 	}
 	
+    public static String getTodaysDate() {
+		
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+		String Date = df.format(new Date());
+		return Date;
+	}
+	
 	public static void pageloadwait(){
 		
 	

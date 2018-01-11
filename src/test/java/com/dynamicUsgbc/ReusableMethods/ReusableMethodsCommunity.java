@@ -130,7 +130,7 @@ public class ReusableMethodsCommunity extends BaseClass {
 				continue;
 			} else
 
-				CommonMethod.assertEqualsMessage(ErrorMsg.getText(), (CommunityRegistrationErrorMsg[i]),
+				CommonMethod.assertEqualsMessage(ErrorMsg.getText(), CommunityRegistrationErrorMsg[i],
 						"Error Msg is not correct");
 
 			i++;
