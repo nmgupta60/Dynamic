@@ -49,7 +49,7 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass", "Entering Zip Code");
 		CommonMethod.click("PaymentSubmitButton");
 		CommonMethod.testlog("Pass", "Clicking on Next button");
-		Thread.sleep(55000);
+		Thread.sleep(5000);
 
 	}
 
@@ -86,6 +86,52 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass","Community email id is correct");
 		CommonMethod.assertEqualsmessage("VerifyPhone", "", "Community phone is not correct");
 		CommonMethod.testlog("Pass","Community phone no is correct");
+
+	}
+	
+	public void verifyDonationPaymentDetails(int rowNum, String sheetName) throws IOException, InterruptedException {
+
+		String amount      = data.getCellData(sheetName, "Amount", rowNum) + ".00";
+		String donorName   = data.getCellData(sheetName, "DonorName", rowNum);
+		String dedicatedTo   = data.getCellData(sheetName, "DedicatedTo", rowNum);
+		String email     = data.getCellData(sheetName, "Email", rowNum);
+		String message   = data.getCellData(sheetName, "Message", rowNum);
+
+		CommonMethod.assertEqualsmessage("VerifyDonationAmount", amount, "Donation Amount is not correct");
+		CommonMethod.assertEqualsmessage("VerifyDonationAnon", "N/A", "Anon Donation detail is not correct");
+		CommonMethod.assertEqualsmessage("VerifyDonationDonor", donorName, "Donor name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyDonationDedication", "yes", "Dedication detail is not correct");
+		CommonMethod.assertEqualsmessage("VerifyDonationOnbehalfOf", dedicatedTo, "Donation On behalf of is not correct");
+		CommonMethod.assertEqualsmessage("VerifyDonationSendeCard", email, "Donation email detail is not correct");
+		CommonMethod.assertEqualsmessage("VerifyDonationMessage", message, "Donation message is not correct");
+		
+
+	}
+	
+	public void verifyExamPaymentDetails(int rowNum, String sheetName) throws IOException, InterruptedException {
+
+		String examType = data.getCellData(sheetName, "ExamType", rowNum);
+		String language = data.getCellData(sheetName, "Language", rowNum);
+		String country   = data.getCellData(sheetName, "CountryCode", rowNum);
+		String street1	 = data.getCellData(sheetName, "Street1", rowNum);
+		String street2 	 = data.getCellData(sheetName, "Street2", rowNum);
+		String city		 = data.getCellData(sheetName, "City", rowNum);
+		String state 	 = data.getCellData(sheetName, "StateCode", rowNum);
+		String zip       = data.getCellData(sheetName, "Zip", rowNum);
+		String amount       = data.getCellData(sheetName, "Amount", rowNum);
+		String email = data.getCellData("SignIn", "Email", rowNum);
+
+		CommonMethod.assertEqualsmessage("VerifyExamName", examType, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamSpeciality", examType, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamLanguage", language, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamFee", amount , "Community name is not correct");
+		//CommonMethod.assertEqualsmessage("VerifyExamContactName", "" , "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamContactAdd", street1 + " " + street2 , "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamCity", city , "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamState", state, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamZipCode", zip, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamCountry", country, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamEmail", email, "Community name is not correct");
 
 	}
 	

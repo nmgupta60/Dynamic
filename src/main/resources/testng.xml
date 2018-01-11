@@ -13,7 +13,7 @@
     <parameter name="ExamRegistrationSheet" value="ExamRegistration"/>
     
     <classes>
-      <class name="com.dynamicUsgbc.testcases.DonationOnlineCfgsTest"/>
+      <class name="com.dynamicUsgbc.testcases.ExamRegistrationFlowTest"/>
     
     </classes>
   </test> 

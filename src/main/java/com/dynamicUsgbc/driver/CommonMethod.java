@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -77,11 +78,7 @@ public class CommonMethod extends BaseClass  {
 		//System.out.println(downloadPath);
 		Properties OR = new Properties();
 		FileInputStream fp = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/ObjectLocator.properties");
-		OR.load(fp);
-		
-		FileInputStream fp1 = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/DashbordLocator.properties");
-		OR.load(fp1);
-		
+		OR.load(fp);		
 		
 		String objecttypeandvalues = OR.getProperty(objectLocater);
 		System.out.println(objecttypeandvalues);
@@ -223,10 +220,20 @@ public class CommonMethod extends BaseClass  {
 	
     public static String getTodaysDate() {
 		
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-		String Date = df.format(new Date());
-		return Date;
+    	Date date = new Date();
+    	String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(date);
+		System.out.println(modifiedDate);
+		return modifiedDate;
 	}
+    
+    public static String getDatefutureYear(int year) {
+    	
+    	Calendar cal = Calendar.getInstance();
+    	cal.add(Calendar.YEAR, year);
+    	Date FutureDate = cal.getTime();
+    	String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(FutureDate);
+    	return modifiedDate;
+    }
 	
 	public static void pageloadwait(){
 		
@@ -782,10 +789,6 @@ public class CommonMethod extends BaseClass  {
 		FileInputStream fp = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/ObjectLocator.properties");
 		OR.load(fp);
 		
-		FileInputStream fp1 = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/DashbordLocator.properties");
-		OR.load(fp1);
-		
-		
 		
 		String objecttypeandvalues = OR.getProperty(objectlocator);
 		
@@ -839,10 +842,6 @@ public class CommonMethod extends BaseClass  {
 		Properties OR = new Properties();
 		FileInputStream fp = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/ObjectLocator.properties");
 		OR.load(fp);
-		
-		FileInputStream fp1 = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/DashbordLocator.properties");
-		OR.load(fp1);
-		
 		
 		
 		String objecttypeandvalues = OR.getProperty(objectlocator);

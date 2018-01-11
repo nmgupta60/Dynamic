@@ -30,6 +30,7 @@ public class DonationOnlineHaitiTest extends BaseClass {
 		try {
 			
 			reuse.DonationByOnline(rowNum, donationsheet);
+			reusePay.verifyDonationPaymentDetails(rowNum, donationsheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();
 			reuse.VerifyReceiptDonation(rowNum, donationsheet);

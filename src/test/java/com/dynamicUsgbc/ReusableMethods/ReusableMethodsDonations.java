@@ -82,7 +82,7 @@ public class ReusableMethodsDonations extends BaseClass{
 		
 		public void VerifyReceiptDonation(int rowNum, String sheetName) throws IOException {
 			
-			String amount      = data.getCellData(sheetName, "Amount", rowNum);
+			String amount      = data.getCellData(sheetName, "Amount", rowNum) + ".00";
 			String donorName   = data.getCellData(sheetName, "DonorName", rowNum);
 			String dedicatedTo   = data.getCellData(sheetName, "DedicatedTo", rowNum);
 			String message   = data.getCellData(sheetName, "Message", rowNum);
