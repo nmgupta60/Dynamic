@@ -19,15 +19,18 @@ public class ReusableMethodExamRegistration extends BaseClass{
 		CommonMethod.testlog( "Pass","Select Yes ,if you are in need of special accommodations for taking your credentialing exam");
 		/*CommonMethod.click("StudentDiscount");
 		CommonMethod.testlog( "Pass","Select Yes ,Student to get special discount on your Green Associate exam.");
-		*/CommonMethod.click("ArmyVeteran");
+		*/
+		CommonMethod.click("ArmyVeteran");
 		CommonMethod.testlog( "Pass","Selecting, 'US Army Veteran'");
 		String[] splits = CommonMethod.getText("ExamRegistrationAmt").split(" ");
 		String Amount= splits[1];
 		data.setCellData(sheetName, "Amount" , rowNum, Amount );
+		CommonMethod.testlog("Pass","Saving the Examination registration fee in excel");
 		CommonMethod.click("CommunityContinue");
 		CommonMethod.testlog( "Pass","Click on Continue button to proceed to SignIn Page");
 		Thread.sleep(3000);
 		CommonMethod.assertcontainsmessage("VerifyTextSignIn", "Sign In for existing Users", "The User Didn't Redirected to SignIn Page");
+		CommonMethod.testlog("Pass","Redirected to SigIn Page successfully");
 	}
 	
 	

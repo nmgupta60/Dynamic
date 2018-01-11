@@ -65,16 +65,27 @@ public class ReusableMethodPayment extends BaseClass {
 		String email = data.getCellData("SignIn", "Email", rowNum);
 
 		CommonMethod.assertEqualsmessage("VerifyCommunityName", communityName, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyPaymentAmount", "", "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyStudent", "Yes", "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyEmergingProfessionals", "Yes", "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyAddress", street1 + " " + street2, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyCity", city, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyState", state, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyZipCode", zip, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyCountry", country, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyEmail", email, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyPhone", "", "Community name is not correct");
+		CommonMethod.testlog("Pass","Community Name Verified Successfully");
+		CommonMethod.assertEqualsmessage("VerifyPaymentAmount", "", "Amount Payable is not correct");
+		CommonMethod.testlog("Pass","Amount payable is correct");
+		CommonMethod.assertEqualsmessage("VerifyStudent", "Yes", "User is not Student");
+		CommonMethod.testlog("Pass","The user is Student Verified Sucessfully");
+		CommonMethod.assertEqualsmessage("VerifyEmergingProfessionals", "Yes", "User is not Emerging professinal");
+		CommonMethod.testlog("Pass","The user is emerging professional verified successfully");
+		CommonMethod.assertEqualsmessage("VerifyAddress", street1 + " " + street2, "Street Address is not correct");
+		CommonMethod.testlog("Pass","Street Address verified successfully");
+		CommonMethod.assertEqualsmessage("VerifyCity", city, "Community city is not correct");
+		CommonMethod.testlog("Pass","Community city name is correct");
+		CommonMethod.assertEqualsmessage("VerifyState", state, "Community state is not correct");
+		CommonMethod.testlog("Pass","Community state name is correct");
+		CommonMethod.assertEqualsmessage("VerifyZipCode", zip, "Community zip is not correct");
+		CommonMethod.testlog("Pass","Community zip code is correct");
+		CommonMethod.assertEqualsmessage("VerifyCountry", country, "Community country is not correct");
+		CommonMethod.testlog("Pass","Community country name is correct");
+		CommonMethod.assertEqualsmessage("VerifyEmail", email, "Community email is not correct");
+		CommonMethod.testlog("Pass","Community email id is correct");
+		CommonMethod.assertEqualsmessage("VerifyPhone", "", "Community phone is not correct");
+		CommonMethod.testlog("Pass","Community phone no is correct");
 
 	}
 	
