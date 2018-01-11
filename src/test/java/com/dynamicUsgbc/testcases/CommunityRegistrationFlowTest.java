@@ -29,7 +29,7 @@ public class CommunityRegistrationFlowTest extends BaseClass {
 		try {
 			
 			reuse.CommunityRegistration(rowNum, CommRegSheet);
-			reuse.CommunitySignIn(rowNum, signinSheet);
+			reuse.SignIn(rowNum, signinSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyCommRegPaymentDetails(rowNum, CommRegSheet);
 			reusePay.verifyPaymentSuccessful();

@@ -53,9 +53,9 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		data.setCellData(sheetName, "TotalAmount", rowNum, Amount);
 		CommonMethod.click("CommunityContinue");
 		CommonMethod.testlog( "Pass","Click on Continue button to proceed payment");
-		CommonMethod.assertcontainsmessage("VerifyTextOnPayment", "Confirmation","Didn't Rediredted to the payment page");
-		CommonMethod.testlog("Pass", "Welcome to the payment page");
-		
+		Thread.sleep(3000);
+		CommonMethod.assertcontainsmessage("VerifyTextSignIn", "Sign In for existing Users","The User Didn't Redirected to SignIn Page");
+		CommonMethod.testlog("Pass","User Redirected to SignInPage");
 	}
 
 
