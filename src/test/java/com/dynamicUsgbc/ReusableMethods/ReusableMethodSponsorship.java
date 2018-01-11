@@ -1,6 +1,10 @@
 package com.dynamicUsgbc.ReusableMethods;
 
 import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
@@ -54,5 +58,39 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		
 	}
 
+
+	public void SponsorshipPageErrorMessageVerify() throws InterruptedException, IOException {
+		String[] CommunityRegistrationErrorMsg = {
+	
+				"You must specify the sponsorship type",
+				"Please specify a valid amount. Do not enter currency symbols.",
+				"Please specify sponsorship start date.",
+				"Please specify sponsorship end date.",
+				"Street address field is required.",
+				"Street address line 2 field is required.",
+				"City field is required.",
+				"Postal code field is required."
+		};
+	
+		CommonMethod.click("CommunityContinue");
+		Thread.sleep(3000);
+	
+		List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));
+		System.out.println(ErrorMsgList.size());
+		int i = 0;
+		for (WebElement ErrorMsg : ErrorMsgList) {
+			System.out.println(ErrorMsg.getText());
+			if (ErrorMsg.getText().equals("")) {
+	
+				continue;
+			} else
+	
+				CommonMethod.assertEqualsMessage(ErrorMsg.getText(), CommunityRegistrationErrorMsg[i],
+						"Error Msg is not correct");
+	
+			i++;
+		}
+
+	}	
 	
 }

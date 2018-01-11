@@ -1,6 +1,10 @@
 package com.dynamicUsgbc.ReusableMethods;
 
 import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
@@ -38,6 +42,7 @@ public class ReusableMethodStore extends BaseClass{
 	
 	public void ClickCheckout() throws IOException {
 		CommonMethod.click("clickCheckout");
+		CommonMethod.testlog("Pass","Clicking on checkout");
 	}
 	
 	public void ShippingAddressProduct(int rowNum, String sheetName) throws IOException, InterruptedException {
@@ -87,6 +92,42 @@ public class ReusableMethodStore extends BaseClass{
 			"The User Didn't Redirected to SignIn Page");
     CommonMethod.testlog( "Pass", " Welcome to Payment Page");
 	}
+	
+	
+	public void StoreContactPageErrorMessageVerify() throws InterruptedException, IOException {
+		String[] CommunityRegistrationErrorMsg = {
+	
+				"Street address field is required.",
+				"Street address line 2 field is required.",
+				"City field is required.",
+				"State field is required.",
+				"Zip code field is required.",
+				"Please select a shipping option.",
+				"Please mention how did you hear about the product."
+		};
+	
+		CommonMethod.click("CommunityContinue");
+		Thread.sleep(3000);
+	
+		List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));
+		System.out.println(ErrorMsgList.size());
+		int i = 0;
+		for (WebElement ErrorMsg : ErrorMsgList) {
+			System.out.println(ErrorMsg.getText());
+			if (ErrorMsg.getText().equals("")) {
+	
+				continue;
+			} else
+	
+				CommonMethod.assertEqualsMessage(ErrorMsg.getText(), CommunityRegistrationErrorMsg[i],
+						"Error Msg is not correct");
+	
+			i++;
+		}
+
+}	
+	
+	
 	
 }
 
