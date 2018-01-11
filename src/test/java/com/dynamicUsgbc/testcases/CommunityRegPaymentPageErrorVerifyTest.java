@@ -19,15 +19,15 @@ public class CommunityRegPaymentPageErrorVerifyTest extends BaseClass {
 		
 		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
 		CommonMethod.ExtentReportConfig();
-		CommonMethod.test = CommonMethod.extent.startTest("CommunityReg Page Error Verify", "Verifies Errors displayed").assignCategory("CheckErrors");
+		CommonMethod.test = CommonMethod.extent.startTest("CommunityReg Payment Page Error Verify", "Verifies Errors displayed").assignCategory("CheckErrors");
 		CommonMethod.setUrl(CommunityRegistrationUrl);
 		
-		ReusableMethodsCommunity reuse = new ReusableMethodsCommunity();
+		ReusableMethodPayment reusePay = new ReusableMethodPayment();
 		
 		
 		try {
 		
-			reuse.CommunityRegistrationPageErrorMessageVerify();
+			reusePay.CommunityRegistrationPaymentPageErrorMessageVerify();
 			
             } 
 		

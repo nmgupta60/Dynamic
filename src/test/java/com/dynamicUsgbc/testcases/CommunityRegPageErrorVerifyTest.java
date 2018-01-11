@@ -30,7 +30,9 @@ public class CommunityRegPageErrorVerifyTest extends BaseClass {
 			
 			reuse.CommunityRegistration(rowNum, CommRegSheet);
 			reuse.CommunitySignIn(rowNum, signinSheet);
+			reuse.CommunityRegistrationPageErrorMessageVerify();
 			reusePay.CommunityRegistrationPaymentPageErrorMessageVerify();
+			
             } 
 		
 		catch (Throwable t) {
