@@ -55,7 +55,7 @@ public class BaseClass {
 	public String CommunityRegistrationUrl = "/community/registration";
 	public String DonationsHaitiUrl = "/donations/center/online/haiti";
 	public String DonationsUsgbcUrl = "/donations/center/online/usgbc";
-	public String DonationsCfgsUrl = "/donations/center/mail/cfgs";
+	public String DonationsCfgsUrl = "/donations/center/online/cfgs";
 	public String DonationsMyGreenAppleUrl = "/donations/center/mail/mygreenapple";
 	public String SponsorshipUrl = "/sponsorship/content";
 	public String ExamRegistrationUrl = "/register-exams/exam";

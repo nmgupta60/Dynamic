@@ -45,6 +45,9 @@ public class ReusableMethodExamRegistration extends BaseClass{
 		String Organization  = data.getCellData(sheetName, "Organization", rowNum);
 		
 		
+		CommonMethod.click("CommunityContinue");
+		
+		
 		CommonMethod.selectdropdown("communityCountry",country);
 		CommonMethod.testlog("Pass", "Selecting the Candidate Country");
 		CommonMethod.sendKeys("CommunityAdd1", street1);
