@@ -119,8 +119,7 @@ public class ReusableMethodPayment extends BaseClass {
 		String state 	 = data.getCellData(sheetName, "StateCode", rowNum);
 		String zip       = data.getCellData(sheetName, "Zip", rowNum);
 		String amount       = data.getCellData(sheetName, "Amount", rowNum);
-		/*String jobTitle  = data.getCellData(sheetName, "JobTitle", rowNum);
-		String Organization  = data.getCellData(sheetName, "Organization", rowNum);*/
+		String email = data.getCellData("SignIn", "Email", rowNum);
 
 		CommonMethod.assertEqualsmessage("VerifyExamName", examType, "Community name is not correct");
 		CommonMethod.assertEqualsmessage("VerifyExamSpeciality", examType, "Community name is not correct");
@@ -132,7 +131,7 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.assertEqualsmessage("VerifyExamState", state, "Community name is not correct");
 		CommonMethod.assertEqualsmessage("VerifyExamZipCode", zip, "Community name is not correct");
 		CommonMethod.assertEqualsmessage("VerifyExamCountry", country, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamEmail", "", "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamEmail", email, "Community name is not correct");
 
 	}
 	

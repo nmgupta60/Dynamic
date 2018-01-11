@@ -36,6 +36,8 @@ public class ExamRegistrationFlowTest extends BaseClass {
 			reusePay.verifyExamPaymentDetails(rowNum, examRegSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();
+			reuse.VerifyReceiptExam(rowNum, examRegSheet);
+			
             } 
 		
 		catch (Throwable t) {
