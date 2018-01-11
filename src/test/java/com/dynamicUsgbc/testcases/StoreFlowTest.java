@@ -7,7 +7,6 @@ import java.io.IOException;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.dynamicUsgbc.ReusableMethods.ReusableMethodExamRegistration;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodPayment;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodStore;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodsCommunity;
@@ -32,11 +31,12 @@ public class StoreFlowTest extends BaseClass {
 		try {
 			
 			reuse.AddProductInCart();
-			reuse.UpdateProductInCart(storeSheet, rowNum);
+			reuse.UpdateProductInCart(rowNum,paymentSheet);
 			reuse.VerifyPriceInCart(rowNum, storeSheet);
 			reuse.ClickCheckout();
 			reuse.ShippingAddressProduct(rowNum, storeSheet);
 			reuseSign.SignIn(rowNum, signInSheet);
+			reusePay.verifyStorePaymentDetails(rowNum, storeSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();
 			//reuse.VerifyReceiptExam(rowNum, examRegSheet);

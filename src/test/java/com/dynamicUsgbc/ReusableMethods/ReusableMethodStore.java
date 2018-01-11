@@ -21,7 +21,7 @@ public class ReusableMethodStore extends BaseClass{
 		CommonMethod.testlog("Pass", "The item added into the cart successfully");
 	}
 	
-	public void UpdateProductInCart(String sheetName, int rowNum) throws IOException, InterruptedException {
+	public void UpdateProductInCart(int rowNum,String sheetName) throws IOException, InterruptedException {
 		
 		String items  = data.getCellData(sheetName, "ItemCount", rowNum);
 		CommonMethod.clear("updateItems");
