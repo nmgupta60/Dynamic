@@ -24,14 +24,14 @@ public class ReusableMethodStore extends BaseClass{
 	public void UpdateProductInCart(String sheetName, int rowNum) throws IOException, InterruptedException {
 		
 		String items  = data.getCellData(sheetName, "ItemCount", rowNum);
-		
+		CommonMethod.clear("updateItems");
 		CommonMethod.sendKeys("updateItems", items);
 		CommonMethod.testlog("Pass", "Increasing the product count");
 		CommonMethod.click("updateCart");
 		CommonMethod.testlog("Pass", "Updating the cart");
 	}
 	
-	public void VerifyPriceInCart(String sheetName, int rowNum) throws IOException, InterruptedException {
+	public void VerifyPriceInCart(int rowNum, String sheetName) throws IOException, InterruptedException {
 		
 		String items  = data.getCellData(sheetName, "ItemCount", rowNum);
 		int item=Integer.parseInt(items)*30;
@@ -50,7 +50,7 @@ public class ReusableMethodStore extends BaseClass{
 		CommonMethod.testlog("Pass","Clicking on checkout");
 	}
 	
-	public void ShippingAddressProduct(String sheetName, int rowNum) throws IOException, InterruptedException {
+	public void ShippingAddressProduct(int rowNum, String sheetName) throws IOException, InterruptedException {
 	
 	String country   = data.getCellData(sheetName, "Country", rowNum);
 	String street1	 = data.getCellData(sheetName, "Street1", rowNum);
@@ -93,7 +93,8 @@ public class ReusableMethodStore extends BaseClass{
 	CommonMethod.click("CommunityContinue");
 	CommonMethod.testlog( "Pass","Clicking on the Continue buttn to proceed Payment ");
 	Thread.sleep(3000);
-    CommonMethod.assertcontainsmessage("VerifyTextOnPayment", "Confirmation", "Didn't Redirected to paymnet page");
+	CommonMethod.assertcontainsmessage("VerifyTextSignIn", "Sign In for existing Users",
+			"The User Didn't Redirected to SignIn Page");
     CommonMethod.testlog( "Pass", " Welcome to Payment Page");
 	}
 	
