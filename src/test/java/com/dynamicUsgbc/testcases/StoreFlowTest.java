@@ -37,6 +37,7 @@ public class StoreFlowTest extends BaseClass {
 			reuse.ClickCheckout();
 			reuse.ShippingAddressProduct(rowNum, storeSheet);
 			reuseSign.CommunitySignIn(rowNum, signInSheet);
+			reusePay.verifyStorePaymentDetails(rowNum, storeSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();
 			//reuse.VerifyReceiptExam(rowNum, examRegSheet);

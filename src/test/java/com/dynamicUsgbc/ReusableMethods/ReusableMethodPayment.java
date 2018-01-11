@@ -49,7 +49,7 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass", "Entering Zip Code");
 		CommonMethod.click("PaymentSubmitButton");
 		CommonMethod.testlog("Pass", "Clicking on Next button");
-		Thread.sleep(5000);
+		Thread.sleep(500000);
 
 	}
 
@@ -133,6 +133,23 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.assertEqualsmessage("VerifyExamCountry", country, "Community name is not correct");
 		CommonMethod.assertEqualsmessage("VerifyExamEmail", email, "Community name is not correct");
 
+	}
+	
+	public void verifyStorePaymentDetails(int rowNum, String sheetName) throws IOException, InterruptedException {
+
+		String country   = data.getCellData(sheetName, "CountryCode", rowNum);
+		String street1	 = data.getCellData(sheetName, "Street1", rowNum);
+		String street2 	 = data.getCellData(sheetName, "Street2", rowNum);
+		String city		 = data.getCellData(sheetName, "City", rowNum);
+		String state 	 = data.getCellData(sheetName, "StateCode", rowNum);
+		String zip       = data.getCellData(sheetName, "Zip", rowNum);
+
+		CommonMethod.assertEqualsmessage("VerifyStoreAddress", street1 + " " + street2, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyStoreCity", city, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyStoreState", state, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyStoreZipCode", zip , "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyStoreCountry", country, "Community name is not correct");
+		
 	}
 	
 	public void verifyPaymentSuccessful() throws IOException {
