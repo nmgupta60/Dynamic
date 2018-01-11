@@ -73,7 +73,7 @@ public class ReusableMethodsCommunity extends BaseClass {
 				"The User Didn't Redirected to SignIn Page");
 	}
 
-	public void CommunitySignIn(int rowNum, String sheetName) throws IOException, InterruptedException {
+	public void SignIn(int rowNum, String sheetName) throws IOException, InterruptedException {
 
 		String email = data.getCellData(sheetName, "Email", rowNum);
 		String password = data.getCellData(sheetName, "Password", rowNum);

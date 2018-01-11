@@ -98,12 +98,19 @@ public class ReusableMethodPayment extends BaseClass {
 		String message   = data.getCellData(sheetName, "Message", rowNum);
 
 		CommonMethod.assertEqualsmessage("VerifyDonationAmount", amount, "Donation Amount is not correct");
+		CommonMethod.testlog("Pass", "Donation amount is correct");
 		CommonMethod.assertEqualsmessage("VerifyDonationAnon", "N/A", "Anon Donation detail is not correct");
+		CommonMethod.testlog("Pass", "Anonymous name is correct");
 		CommonMethod.assertEqualsmessage("VerifyDonationDonor", donorName, "Donor name is not correct");
+		CommonMethod.testlog("Pass", "Donor name is correct");
 		CommonMethod.assertEqualsmessage("VerifyDonationDedication", "yes", "Dedication detail is not correct");
+		CommonMethod.testlog("Pass", "Dedication detail is correct");
 		CommonMethod.assertEqualsmessage("VerifyDonationOnbehalfOf", dedicatedTo, "Donation On behalf of is not correct");
+		CommonMethod.testlog("Pass", "Donation detail on behalf of is correct");
 		CommonMethod.assertEqualsmessage("VerifyDonationSendeCard", email, "Donation email detail is not correct");
+		CommonMethod.testlog("Pass", "Donation email is correct");
 		CommonMethod.assertEqualsmessage("VerifyDonationMessage", message, "Donation message is not correct");
+		CommonMethod.testlog("Pass", "Donation message is correct");
 		
 
 	}
@@ -121,17 +128,27 @@ public class ReusableMethodPayment extends BaseClass {
 		String amount       = data.getCellData(sheetName, "Amount", rowNum);
 		String email = data.getCellData("SignIn", "Email", rowNum);
 
-		CommonMethod.assertEqualsmessage("VerifyExamName", examType, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamSpeciality", examType, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamLanguage", language, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamFee", amount , "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamName", examType, "Exam name is not correct");
+		CommonMethod.testlog("Pass", "Examination Name is correct");
+		CommonMethod.assertEqualsmessage("VerifyExamSpeciality", examType, "Special preference is not correct");
+		CommonMethod.testlog("pass", "Special preference is correct");
+		CommonMethod.assertEqualsmessage("VerifyExamLanguage", language, "Examination language is not correct");
+		CommonMethod.testlog("pass", "Examination language is correct");
+		CommonMethod.assertEqualsmessage("VerifyExamFee", amount , "Examination fee is not correct");
+		CommonMethod.testlog("Pass", "Examination fee is correct");
 		//CommonMethod.assertEqualsmessage("VerifyExamContactName", "" , "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamContactAdd", street1 + " " + street2 , "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamCity", city , "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamState", state, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamZipCode", zip, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamCountry", country, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyExamEmail", email, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyExamContactAdd", street1 + " " + street2 , "Examination contact address is not correct");
+		CommonMethod.testlog("Pass", "Examination contact address is correct");
+		CommonMethod.assertEqualsmessage("VerifyExamCity", city , "Examination contact city is not correct");
+		CommonMethod.testlog("Pass", "Examination contact city is correct");
+		CommonMethod.assertEqualsmessage("VerifyExamState", state, "Examination contact state is not correct");
+		CommonMethod.testlog("Pass", "Examination contact state is correct");
+		CommonMethod.assertEqualsmessage("VerifyExamZipCode", zip, "Examination zip is not correct");
+		CommonMethod.testlog("Pass", "Examination zip is correct");
+		CommonMethod.assertEqualsmessage("VerifyExamCountry", country, "Examination contact country is not correct");
+		CommonMethod.testlog("Pass", "Examination contact country is correct");
+		CommonMethod.assertEqualsmessage("VerifyExamEmail", email, "Examination contact email is not correct");
+		CommonMethod.testlog("Pass", "Examination contact email is correct");
 
 	}
 	

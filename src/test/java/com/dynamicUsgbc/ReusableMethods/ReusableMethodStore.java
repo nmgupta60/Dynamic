@@ -21,10 +21,11 @@ public class ReusableMethodStore extends BaseClass{
 		CommonMethod.testlog("Pass", "The item added into the cart successfully");
 	}
 	
-	public void UpdateProductInCart() throws IOException, InterruptedException {
+	public void UpdateProductInCart(String sheetName, int rowNum) throws IOException, InterruptedException {
 		
+		String items  = data.getCellData(sheetName, "ItemCount", rowNum);
 		CommonMethod.clear("updateItems");
-		CommonMethod.sendKeys("updateItems", "5");
+		CommonMethod.sendKeys("updateItems", items);
 		CommonMethod.testlog("Pass", "Increasing the product count");
 		CommonMethod.click("updateCart");
 		CommonMethod.testlog("Pass", "Updating the cart");
@@ -32,7 +33,11 @@ public class ReusableMethodStore extends BaseClass{
 	
 	public void VerifyPriceInCart(int rowNum, String sheetName) throws IOException, InterruptedException {
 		
-		CommonMethod.assertcontainsmessage("cartProductPrice1", "$150.00","Product price didn't matched");
+		String items  = data.getCellData(sheetName, "ItemCount", rowNum);
+		int item=Integer.parseInt(items)*30;
+		System.out.println(item);
+		String price = "$"+Integer.toString(item)+".00";
+		CommonMethod.assertcontainsmessage("cartProductPrice1",price ,"Product price didn't matched");
 		CommonMethod.testlog("Pass", "Product price verified successfully");
 		CommonMethod.assertcontainsmessage("cartTotalPrice", "$150.00", "Total Product price didn't matched");
 		CommonMethod.testlog("Pass", "Product total price verified successfully");

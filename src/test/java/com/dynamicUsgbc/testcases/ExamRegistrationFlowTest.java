@@ -31,7 +31,7 @@ public class ExamRegistrationFlowTest extends BaseClass {
 		try {
 			
 			reuse.ExamRegistration(rowNum, examRegSheet);
-			reuseComm.CommunitySignIn(rowNum, signinSheet);
+			reuseComm.SignIn(rowNum, signinSheet);
 			reuse.CandidateInformation(rowNum, examRegSheet);
 			reusePay.verifyExamPaymentDetails(rowNum, examRegSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);

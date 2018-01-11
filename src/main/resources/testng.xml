@@ -10,11 +10,16 @@
     <parameter name="SignInSheet" value="SignIn"/>
     <parameter name="PaymentSheet" value="Payment"/>
     <parameter name="DonationSheet" value="Donation"/>
+    <parameter name="SponsorshipSheet" value="Sponsorship"></parameter>
     <parameter name="ExamRegistrationSheet" value="ExamRegistration"/>
     <parameter name="StoreSheet" value="Store"/>
     
     <classes>
-      <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>
+
+      <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/>
+
+      <!-- <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/> -->
+
     
     </classes>
   </test> 

@@ -94,15 +94,19 @@ public class ReusableMethodExamRegistration extends BaseClass{
 		String language = data.getCellData(sheetName, "Language", rowNum);
 		String amount       = data.getCellData(sheetName, "Amount", rowNum);
 		
-		
-		
 		CommonMethod.assertEqualsmessage("ReceiptExamName", examType, "Exam Name is not correct");
+		CommonMethod.testlog("Pass", "Exam Name is correct");
 		CommonMethod.assertEqualsmessage("ReceiptExamSpeciality", examTypeSpeciality, "Exam Speciality is not correct");
+		CommonMethod.testlog("Pass", "Examination speciality is correct");
 		CommonMethod.assertEqualsmessage("ReceiptExamLanguage", language, "Exam Language is not correct");
+		CommonMethod.testlog("Pass", "Examination language is correct");
 		CommonMethod.assertEqualsmessage("ReceiptExamFee", amount, "Exam Fee is not correct");
+		CommonMethod.testlog("Pass", "Exmaninatio fee is correct");
 		CommonMethod.assertEqualsmessage("ReceiptOrderDate", CommonMethod.getTodaysDate(), "Order Date is not correct");
+		CommonMethod.testlog("Pass", "Order date is correct");
 		CommonMethod.assertEqualsmessage("ReceiptExpirationDate", CommonMethod.getDatefutureYear(1), "Expiration Date is not correct");
-	}
+		CommonMethod.testlog("Pass", "Receipt Expiration Date is correct");
+    }
     
 	
     

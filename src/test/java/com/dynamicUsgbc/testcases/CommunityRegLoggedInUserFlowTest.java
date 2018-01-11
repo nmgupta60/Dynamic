@@ -28,7 +28,7 @@ public class CommunityRegLoggedInUserFlowTest extends BaseClass {
 		try {
 			
 			reuse.CommunityRegistration(rowNum, CommRegSheet);
-			reuse.CommunitySignIn(rowNum, signinSheet);
+			reuse.SignIn(rowNum, signinSheet);
 			reuse.verifyEditDetailsLoggedInUser(rowNum, CommRegSheet);
 			
             } 
