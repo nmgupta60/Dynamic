@@ -152,6 +152,14 @@ public class ReusableMethodPayment extends BaseClass {
 
 	}
 	
+	
+	public void PaymentByCheck() throws IOException {
+		CommonMethod.click("SelectPayByCheck");
+		CommonMethod.testlog("Pass", "Selecting the payment by check option");
+		CommonMethod.click("PaymentSubmitButton");
+		CommonMethod.testlog("Pass", "Clicking on the submit payment button ");
+	}
+	
 	public void verifyPaymentSuccessful() throws IOException {
 		
 		String ExpectedMessage = "Thank you!";

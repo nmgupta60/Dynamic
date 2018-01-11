@@ -16,7 +16,7 @@
     
     <classes>
 
-      <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/>
+      <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/>
 
       <!-- <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/> -->
 

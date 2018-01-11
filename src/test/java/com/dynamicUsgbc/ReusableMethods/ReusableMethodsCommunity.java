@@ -108,6 +108,21 @@ public class ReusableMethodsCommunity extends BaseClass {
 		
 	}
 
+	public void VerifyReceiptCommunity(int rowNum, String sheetName) throws IOException {
+		
+		String amount      = data.getCellData(sheetName, "TotalAmount", rowNum) + ".00";
+		String communityName   = data.getCellData(sheetName, "CommunityName", rowNum);
+		
+		
+		CommonMethod.assertEqualsmessage("ReceiptDonationAmount", amount, "Amount is not correct");
+		CommonMethod.testlog("Pass","Donation Amount is correct");
+		CommonMethod.assertEqualsmessage("ReceiptCommunityDate", CommonMethod.getTodaysDate(), "Date is not correct");
+		CommonMethod.testlog("Pass","Donation date is correct");
+		CommonMethod.assertEqualsmessage("ReceiptCommunityName", communityName, "Community Name is not correct");
+		CommonMethod.testlog("Pass","Community Name is correct");
+		
+	}
+	
 	public void CommunityRegistrationPageErrorMessageVerify() throws InterruptedException, IOException {
 		String[] CommunityRegistrationErrorMsg = {
 

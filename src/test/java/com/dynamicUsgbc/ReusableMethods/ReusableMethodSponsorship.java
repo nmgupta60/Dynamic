@@ -2,6 +2,7 @@ package com.dynamicUsgbc.ReusableMethods;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -28,7 +29,8 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		
 		CommonMethod.selectdropdown("communityName", communityName);
 		CommonMethod.testlog("Pass", "Selecting the community Name frm the Dropdown");
-		CommonMethod.click("checkEvents");
+		//CommonMethod.click("checkEvents");
+		SelectSponsorshipTypeRandom( rowNum, sheetName);
 		CommonMethod.testlog("Pass", "Clciking on Sponsorship Type");
 		CommonMethod.sendKeys("sponsorAmount", amount);
 		CommonMethod.testlog("Pass", "Entering the scholarship amount");
@@ -57,6 +59,32 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		CommonMethod.assertcontainsmessage("VerifyTextSignIn", "Sign In for existing Users","The User Didn't Redirected to SignIn Page");
 		CommonMethod.testlog("Pass","User Redirected to SignInPage");
 	}
+
+
+		/*  select event type class ->    .//*[@class="form-radio"] */
+
+		
+	public void SelectSponsorshipTypeRandom(int rowNum, String sheetName) {
+		
+		String sponsorshipType;
+		List<WebElement> EventList = driver.findElements(By.className("form-radio"));
+	    Random random = new Random();
+	    int index = random.nextInt(EventList.size());
+	    System.out.println(index);
+	    if(index==0) {
+	    	sponsorshipType="Events";
+	    }
+	    else if(index==1) {
+	    	sponsorshipType="Booth/Exhibit";
+	    }
+	    else {
+	    	sponsorshipType="Annual Partnerships";
+	    }
+	    data.setCellData(sheetName,"SponsorshipType" , rowNum, sponsorshipType);
+	    EventList.get(index).click();
+		
+	}
+
 
 
 	public void SponsorshipPageErrorMessageVerify() throws InterruptedException, IOException {
