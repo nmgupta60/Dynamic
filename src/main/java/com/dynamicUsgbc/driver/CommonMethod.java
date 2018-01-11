@@ -20,14 +20,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
-import javax.imageio.ImageIO;
-
 import org.apache.commons.io.FileUtils;
-import org.im4java.core.CompareCmd;
-import org.im4java.core.IMOperation;
-import org.im4java.process.ProcessStarter;
-import org.im4java.process.StandardStream;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -45,12 +38,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-import com.google.common.io.Files;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-
-import ru.yandex.qatools.ashot.Screenshot;
 
 public class CommonMethod extends BaseClass  {
 	
@@ -347,7 +337,7 @@ public class CommonMethod extends BaseClass  {
                 .executeScript("return jQuery.active") == 0);
 
         Wait.until(jsLoad);
-       // wait.until(jQueryLoad);
+       Wait.until(jQueryLoad);
     }
     
     public static void selectdropdownrandom(String objectLocator) throws IOException, InterruptedException{

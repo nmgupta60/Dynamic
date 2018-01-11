@@ -14,7 +14,7 @@ public class ReusableMethodsCommunity extends BaseClass {
 	public void CommunityRegistration(int rowNum, String sheetName) throws IOException, InterruptedException {
 
 		String communityName = data.getCellData(sheetName, "CommunityName", rowNum);
-		String newCommunityName = data.getCellData(sheetName, "NewCommunityName", rowNum);
+		//String newCommunityName = data.getCellData(sheetName, "NewCommunityName", rowNum);
 		String country = data.getCellData(sheetName, "Country", rowNum);
 		String street1 = data.getCellData(sheetName, "Street1", rowNum);
 		String street2 = data.getCellData(sheetName, "Street2", rowNum);

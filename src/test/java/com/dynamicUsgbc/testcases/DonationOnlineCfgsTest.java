@@ -8,7 +8,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodPayment;
-import com.dynamicUsgbc.ReusableMethods.ReusableMethodsCommunity;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodsDonations;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
