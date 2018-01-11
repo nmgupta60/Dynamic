@@ -223,9 +223,10 @@ public class CommonMethod extends BaseClass  {
 	
     public static String getTodaysDate() {
 		
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-		String Date = df.format(new Date());
-		return Date;
+    	Date date = new Date();
+    	String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(date);
+		System.out.println(modifiedDate);
+		return modifiedDate;
 	}
 	
 	public static void pageloadwait(){
