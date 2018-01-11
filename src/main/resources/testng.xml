@@ -8,10 +8,12 @@
     <parameter name="rowNum" value="2"/>
     <parameter name="CommunityRegistrationSheet" value="CommunityRegistration"/>
     <parameter name="SignInSheet" value="SignIn"/>
-     <parameter name="PaymentSheet" value="Payment"/>
+    <parameter name="PaymentSheet" value="Payment"/>
+    <parameter name="DonationSheet" value="Donation"/>
+    <parameter name="ExamRegistrationSheet" value="ExamRegistration"/>
     
     <classes>
-      <class name="com.dynamicUsgbc.testcases.CommunityRegLoggedInUserFlowTest"/>
+      <class name="com.dynamicUsgbc.testcases.DonationOnlineCfgsTest"/>
     
     </classes>
   </test> 

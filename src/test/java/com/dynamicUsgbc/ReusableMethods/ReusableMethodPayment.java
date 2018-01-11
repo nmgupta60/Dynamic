@@ -49,7 +49,7 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass", "Entering Zip Code");
 		CommonMethod.click("PaymentSubmitButton");
 		CommonMethod.testlog("Pass", "Clicking on Next button");
-		Thread.sleep(25000);
+		Thread.sleep(5000);
 
 	}
 
@@ -76,6 +76,12 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.assertEqualsmessage("VerifyEmail", email, "Community name is not correct");
 		CommonMethod.assertEqualsmessage("VerifyPhone", "", "Community name is not correct");
 
+	}
+	
+	public void verifyPaymentSuccessful() throws IOException {
+		
+		String ExpectedMessage = "Thank you!";
+		CommonMethod.assertEqualsmessage("SuccessfulPayment", ExpectedMessage, "Payment is not succesful");
 	}
 
 	public void CommunityRegistrationPaymentPageErrorMessageVerify() throws InterruptedException, IOException {
