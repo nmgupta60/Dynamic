@@ -29,8 +29,8 @@ public class CommunityRegistrationFlowByCheckTest extends BaseClass{
 			
 			reuse.CommunityRegistration(rowNum, CommRegSheet);
 			reuse.SignIn(rowNum, signinSheet);
-			reusePay.PaymentByCheck();
 			reusePay.verifyCommRegPaymentDetails(rowNum, CommRegSheet);
+			reusePay.PaymentByCheck();
 			reusePay.verifyPaymentSuccessful();
 			reuse.VerifyReceiptCommunity(rowNum,CommRegSheet );
 			

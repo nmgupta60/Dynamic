@@ -26,8 +26,6 @@ public class CommunityRegPageErrorVerifyTest extends BaseClass {
 		
 		try {
 			
-			reuse.CommunityRegistration(rowNum, CommRegSheet);
-			reuse.SignIn(rowNum, signinSheet);
 			reuse.CommunityRegistrationPageErrorMessageVerify();
 			
 			

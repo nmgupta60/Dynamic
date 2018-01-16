@@ -21,10 +21,12 @@ public class ReusableMethodStore extends BaseClass{
 		CommonMethod.testlog("Pass", "The item added into the cart successfully");
 	}
 	
-	public void UpdateProductInCart(int rowNum,String sheetName) throws IOException, InterruptedException {
+	public void UpdateProductInCart(int rowNum, String sheetName) throws IOException, InterruptedException {
 		
 		String items  = data.getCellData(sheetName, "ItemCount", rowNum);
 		CommonMethod.clear("updateItems");
+		Thread.sleep(3000);
+		System.out.println(items);
 		CommonMethod.sendKeys("updateItems", items);
 		CommonMethod.testlog("Pass", "Increasing the product count");
 		CommonMethod.click("updateCart");

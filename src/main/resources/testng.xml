@@ -3,7 +3,7 @@
 <suite name="VisualTest">
     
   <test name="USGBC">
-    <parameter name="browserName"  value="firefox"/>
+    <parameter name="browserName"  value="ie"/>
     <parameter name="environment"  value="staging"/>
     <parameter name="rowNum" value="2"/>
     <parameter name="CommunityRegistrationSheet" value="CommunityRegistration"/>
@@ -15,12 +15,23 @@
     <parameter name="StoreSheet" value="Store"/>
     
     <classes>
-
-      <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/>
-
-      <!-- <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/> -->
-
-    
+  
+		  
+        
+  
+  	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/> 
+	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/> 
+	  <class name="com.dynamicUsgbc.testcases.CommunityRegLoggedInUserFlowTest"/>
+	  <class name="com.dynamicUsgbc.testcases.CommunityRegPageErrorVerifyTest"/>
+	  <class name="com.dynamicUsgbc.testcases.CommunityRegPaymentPageErrorVerifyTest"/>
+	  <class name="com.dynamicUsgbc.testcases.DonationOnlineCfgsTest"/>
+	  <class name="com.dynamicUsgbc.testcases.DonationOnlineHaitiTest"/>
+	  <class name="com.dynamicUsgbc.testcases.DonationOnlineMyGreenAppleTest"/>
+	  <class name="com.dynamicUsgbc.testcases.DonationOnlineUsgbcTest"/>
+	  <class name="com.dynamicUsgbc.testcases.ExamRegistrationFlowTest"/>
+	  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/>
+	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/> 
+      
     </classes>
   </test> 
 </suite>

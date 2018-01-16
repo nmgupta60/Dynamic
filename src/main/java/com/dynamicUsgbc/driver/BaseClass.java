@@ -16,9 +16,12 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+import com.relevantcodes.extentreports.LogStatus;
 
 
 
@@ -35,7 +38,7 @@ public class BaseClass {
 	public String DonationsHaitiUrl = "/donations/center/online/haiti";
 	public String DonationsUsgbcUrl = "/donations/center/online/usgbc";
 	public String DonationsCfgsUrl = "/donations/center/online/cfgs";
-	public String DonationsMyGreenAppleUrl = "/donations/center/mail/mygreenapple";
+	public String DonationsMyGreenAppleUrl = "/donations/center/online/mygreenapple";
 	public String SponsorshipUrl = "/sponsorship/content";
 	public String ExamRegistrationUrl = "/register-exams/exam";
 	public String StoreUrl = "/store";
@@ -166,6 +169,23 @@ public class BaseClass {
 		
 	
 	}
+	
+	
+	@AfterMethod(alwaysRun = true)
+	public void teardown(ITestResult result) {
+		
+		 if (result.getStatus() == ITestResult.FAILURE) {
+			 CommonMethod.test.log(LogStatus.FAIL, result.getThrowable());
+	        } else if (result.getStatus() == ITestResult.SKIP) {
+	        CommonMethod.test.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
+	        } else {
+	        CommonMethod.test.log(LogStatus.PASS, "Test passed");
+	        }
+		CommonMethod.extent.endTest(CommonMethod.test);
+		CommonMethod.extent.flush();
+	}
+	
+	
 	
 	
 	    @AfterClass(alwaysRun = true)

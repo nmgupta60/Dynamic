@@ -4,16 +4,19 @@ package com.dynamicUsgbc.testcases;
 
 import java.io.IOException;
 
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodPayment;
+import com.dynamicUsgbc.ReusableMethods.ReusableMethodsCommunity;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
 
 public class CommunityRegPaymentPageErrorVerifyTest extends BaseClass {
 	
 	@Test
-	public void CommunityRegPaymentPageErrorVerify() throws IOException {
+	@Parameters({"rowNum" ,"CommunityRegistrationSheet","SignInSheet"})
+	public void CommunityRegPaymentPageErrorVerify(int rowNum, String CommRegSheet, String signinSheet) throws IOException {
 		
 		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
 		CommonMethod.ExtentReportConfig();
@@ -21,10 +24,11 @@ public class CommunityRegPaymentPageErrorVerifyTest extends BaseClass {
 		CommonMethod.setUrl(CommunityRegistrationUrl);
 		
 		ReusableMethodPayment reusePay = new ReusableMethodPayment();
-		
+		ReusableMethodsCommunity reuse = new ReusableMethodsCommunity();
 		
 		try {
-		
+			reuse.CommunityRegistration(rowNum, CommRegSheet);
+			reuse.SignIn(rowNum, signinSheet);
 			reusePay.CommunityRegistrationPaymentPageErrorMessageVerify();
 			
             } 

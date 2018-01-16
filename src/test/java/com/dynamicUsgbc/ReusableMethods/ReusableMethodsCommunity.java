@@ -52,6 +52,7 @@ public class ReusableMethodsCommunity extends BaseClass {
 		CommonMethod.sendKeys("StudentId", studentId);
 		CommonMethod.testlog("Pass", "Entering Student ID");
 		CommonMethod.moveToElement("GraduationDate");
+		Thread.sleep(2000);
 		CommonMethod.sendKeys("GraduationDate", graduationDate);
 		CommonMethod.testlog("Pass", "Entering Graduation Date");
 		CommonMethod.click("IsEmergingProff");
@@ -63,6 +64,7 @@ public class ReusableMethodsCommunity extends BaseClass {
 		CommonMethod.testlog("Pass", "Selecting Hear from email");
 		CommonMethod.click("tickAgree");
 		CommonMethod.testlog("Pass", "Click on I Agree option");
+		Thread.sleep(2000);
 		String[] splits = CommonMethod.getText("CommunityRegAmt").split(" ");
 		String Amount = splits[1];
 		data.setCellData(sheetName, "TotalAmount", rowNum, Amount);

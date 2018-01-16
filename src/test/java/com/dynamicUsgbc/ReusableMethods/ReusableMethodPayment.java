@@ -49,7 +49,7 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass", "Entering Zip Code");
 		CommonMethod.click("PaymentSubmitButton");
 		CommonMethod.testlog("Pass", "Clicking on Next button");
-		Thread.sleep(500000);
+		Thread.sleep(3000);
 
 	}
 
@@ -63,10 +63,11 @@ public class ReusableMethodPayment extends BaseClass {
 		String state = data.getCellData(sheetName, "StateCode", rowNum);
 		String zip = data.getCellData(sheetName, "Zip", rowNum);
 		String email = data.getCellData("SignIn", "Email", rowNum);
+		String total = data.getCellData(sheetName, "TotalAmount", rowNum);
 
 		CommonMethod.assertEqualsmessage("VerifyCommunityName", communityName, "Community name is not correct");
 		CommonMethod.testlog("Pass","Community Name Verified Successfully");
-		CommonMethod.assertEqualsmessage("VerifyPaymentAmount", "", "Amount Payable is not correct");
+		CommonMethod.assertEqualsmessage("VerifyPaymentAmount", total, "Amount Payable is not correct");
 		CommonMethod.testlog("Pass","Amount payable is correct");
 		CommonMethod.assertEqualsmessage("VerifyStudent", "Yes", "User is not Student");
 		CommonMethod.testlog("Pass","The user is Student Verified Sucessfully");
@@ -170,53 +171,60 @@ public class ReusableMethodPayment extends BaseClass {
 		String state 	 = data.getCellData(sheetName, "StateCode", rowNum);
 		String zip       = data.getCellData(sheetName, "Zip", rowNum);
 
-		CommonMethod.assertEqualsmessage("VerifyStoreAddress", street1 + " " + street2, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyStoreCity", city, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyStoreState", state, "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyStoreZipCode", zip , "Community name is not correct");
-		CommonMethod.assertEqualsmessage("VerifyStoreCountry", country, "Community name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyStoreAddress", street1 + " " + street2, "Billing Address is not correct");
+		CommonMethod.testlog("Pass", "Billing Address is correct");
+		CommonMethod.assertEqualsmessage("VerifyStoreCity", city, "billing City is not correct");
+		CommonMethod.testlog("Pass", "Billing city is correct");
+		CommonMethod.assertEqualsmessage("VerifyStoreState", state, "Billing State is not correct");
+		CommonMethod.testlog("Pass", "Billing Address is correct ");
+		CommonMethod.assertEqualsmessage("VerifyStoreZipCode", zip , "Billing Zipcode is not correct");
+		CommonMethod.testlog("Pass", "Billing zip code is correct");
+		CommonMethod.assertEqualsmessage("VerifyStoreCountry", country, "Billing Country is not correct");
+		CommonMethod.testlog("Pass", "Billing country is correct");
 		
 	}
 	
 	public void verifySponsershipPaymentDetails(int rowNum, String sheetName) throws IOException, InterruptedException {
 
 		String communityName  = data.getCellData(sheetName, "CommunityName", rowNum);
-		String sponserType       = data.getCellData(sheetName, "SponsershipType", rowNum);
+		String sponserType   = data.getCellData(sheetName, "SponsorshipType", rowNum);
 		String amount   = data.getCellData(sheetName, "Amount", rowNum);
 		String startDate = data.getCellData(sheetName, "StartDate", rowNum);
 		String endDate   = data.getCellData(sheetName, "EndDate", rowNum);
-		String country   = data.getCellData(sheetName, "Country", rowNum);
+		String country   = data.getCellData(sheetName, "CountryCode", rowNum);
 		String street1	 = data.getCellData(sheetName, "Street1", rowNum);
 		String street2 	 = data.getCellData(sheetName, "Street2", rowNum);
 		String city		 = data.getCellData(sheetName, "City", rowNum);
-		String state 	 = data.getCellData(sheetName, "State", rowNum);
+		String state 	 = data.getCellData(sheetName, "StateCode", rowNum);
 		String zip       = data.getCellData(sheetName, "Zip", rowNum);
 		String email = data.getCellData("SignIn", "Email", rowNum);
 		
 		String SponAmount = "$" + amount + ".00";
 
-		CommonMethod.assertEqualsmessage("VerifySponserCommName", communityName, "Exam name is not correct");
-		CommonMethod.testlog("Pass", "Examination Name is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserType", sponserType, "Special preference is not correct");
-		CommonMethod.testlog("pass", "Special preference is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserStartsOn", startDate, "Examination language is not correct");
-		CommonMethod.testlog("pass", "Examination language is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserValidUntil", endDate , "Examination fee is not correct");
-		CommonMethod.testlog("Pass", "Examination fee is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserAmount", SponAmount , "Examination contact address is not correct");
-		CommonMethod.testlog("Pass", "Examination contact address is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserAddress", street1 + " " + street2 , "Examination contact city is not correct");
-		CommonMethod.testlog("Pass", "Examination contact city is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserCity", city, "Examination contact state is not correct");
-		CommonMethod.testlog("Pass", "Examination contact state is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserState", state, "Examination zip is not correct");
-		CommonMethod.testlog("Pass", "Examination zip is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserZip", zip, "Examination contact country is not correct");
-		CommonMethod.testlog("Pass", "Examination contact country is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserCountry", country, "Examination contact email is not correct");
-		CommonMethod.testlog("Pass", "Examination contact email is correct");
-		CommonMethod.assertEqualsmessage("VerifySponserEmail", email, "Examination contact email is not correct");
-		CommonMethod.testlog("Pass", "Examination contact email is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserCommName", communityName, "Sponsorship Community name is not correct");
+		CommonMethod.testlog("Pass", "Sponsorship Community name is correct");
+		System.out.println(sponserType);
+		System.out.println(CommonMethod.getText("VerifySponserType"));
+		CommonMethod.assertEqualsmessage("VerifySponserType", sponserType, "SponsorType is not correct");
+		CommonMethod.testlog("pass", "Sponsor type is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserStartsOn", startDate, "Event start date is not correct");
+		CommonMethod.testlog("pass", "Event start date is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserValidUntil", endDate , "Event end date is not correct");
+		CommonMethod.testlog("Pass", "Event end date is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserAmount", SponAmount , "Sponsorship amount is not correct");
+		CommonMethod.testlog("Pass", "Sponsorship amount is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserAddress", street1 + " " + street2 , "Sponsorship address is not correct");
+		CommonMethod.testlog("Pass", "Sponsorship Address is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserCity", city, "Sponsorship city  is not correct");
+		CommonMethod.testlog("Pass", "Sponsorship city is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserState", state, "Sponsorship state is not correct");
+		CommonMethod.testlog("Pass", "Sponsorship state is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserZip", zip, "Sponsorship zip is not correct");
+		CommonMethod.testlog("Pass", "Sponsorship zip is corret");
+		CommonMethod.assertEqualsmessage("VerifySponserCountry", country, "Sponsorship Country is not correct");
+		CommonMethod.testlog("Pass", "Sponsorship country is correct");
+		CommonMethod.assertEqualsmessage("VerifySponserEmail", email, "Sponsorship contact email is not correct");
+		CommonMethod.testlog("Pass", "Sponsorship contact email is correct");
 
 	}
 	

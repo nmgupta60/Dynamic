@@ -30,9 +30,10 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		CommonMethod.selectdropdown("communityName", communityName);
 		CommonMethod.testlog("Pass", "Selecting the community Name frm the Dropdown");
 		//CommonMethod.click("checkEvents");
-		SelectSponsorshipTypeRandom( rowNum, sheetName);
+		SelectSponsorshipTypeRandom(rowNum, sheetName);
 		CommonMethod.testlog("Pass", "Clciking on Sponsorship Type");
 		Thread.sleep(2000);
+		
 		CommonMethod.sendKeys("sponsorAmount", amount);
 		CommonMethod.testlog("Pass", "Entering the scholarship amount");
 		CommonMethod.sendKeys("startDate", startDate);
