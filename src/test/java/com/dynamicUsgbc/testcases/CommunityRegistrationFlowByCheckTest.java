@@ -2,6 +2,7 @@ package com.dynamicUsgbc.testcases;
 
 import java.io.IOException;
 
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -21,6 +22,10 @@ public class CommunityRegistrationFlowByCheckTest extends BaseClass{
 		CommonMethod.ExtentReportConfig();
 		CommonMethod.test = CommonMethod.extent.startTest("Community Registration ByCheck", "Verifies if Community Registration is done successfully").assignCategory("CheckCommunityRegistration");
 		CommonMethod.setUrl(CommunityRegistrationUrl);
+		
+		/*//System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"/DriverFiles/IEDriverServer.exe");
+		driver = new InternetExplorerDriver();
+		driver.get("http://test-dynamic-usgbc.pantheonsite.io/community/registration");*/
 		
 		ReusableMethodsCommunity reuse = new ReusableMethodsCommunity();
 		ReusableMethodPayment reusePay = new ReusableMethodPayment();

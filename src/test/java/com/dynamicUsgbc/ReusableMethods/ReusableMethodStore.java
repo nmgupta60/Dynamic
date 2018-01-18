@@ -80,6 +80,7 @@ public class ReusableMethodStore extends BaseClass{
 	CommonMethod.testlog( "Pass","Entering Zip Code");
 	CommonMethod.selectdropdown("selectServiceType", serviceType);
 	CommonMethod.testlog( "Pass","Selecting the fedex service type");
+	Thread.sleep(4000);
 	CommonMethod.click("IsStudent");
 	CommonMethod.testlog( "Pass","Selecting yes in full time student ");
 	CommonMethod.sendKeys("SchoolName", school);

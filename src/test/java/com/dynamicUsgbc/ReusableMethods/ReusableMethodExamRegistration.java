@@ -39,6 +39,13 @@ public class ReusableMethodExamRegistration extends BaseClass{
 	
 	
 	
+	public void clickContinue() throws IOException, InterruptedException {
+		Thread.sleep(5000);
+		CommonMethod.scrolldowntoLast();
+		CommonMethod.click("CommunityContinue");
+	}
+	
+	
     public void CandidateInformation(int rowNum, String sheetName) throws IOException, InterruptedException {
 		
     	String country   = data.getCellData(sheetName, "Country", rowNum);
@@ -51,8 +58,6 @@ public class ReusableMethodExamRegistration extends BaseClass{
 		String jobTitle  = data.getCellData(sheetName, "JobTitle", rowNum);
 		String Organization  = data.getCellData(sheetName, "Organization", rowNum);
 		
-		
-		CommonMethod.click("CommunityContinue");
 		
 		
 		CommonMethod.selectdropdown("communityCountry",country);

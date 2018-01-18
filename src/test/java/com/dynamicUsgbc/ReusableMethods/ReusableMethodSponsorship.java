@@ -32,10 +32,10 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		//CommonMethod.click("checkEvents");
 		SelectSponsorshipTypeRandom(rowNum, sheetName);
 		CommonMethod.testlog("Pass", "Clciking on Sponsorship Type");
-		Thread.sleep(2000);
-		
+		//Thread.sleep(3000);
 		CommonMethod.sendKeys("sponsorAmount", amount);
 		CommonMethod.testlog("Pass", "Entering the scholarship amount");
+		CommonMethod.click("startDate");
 		CommonMethod.sendKeys("startDate", startDate);
 		CommonMethod.testlog("Pass", "Entering the start date");
 		CommonMethod.sendKeys("endDate", endDate);

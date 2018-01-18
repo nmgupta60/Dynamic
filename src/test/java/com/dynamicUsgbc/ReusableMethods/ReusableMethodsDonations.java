@@ -97,6 +97,14 @@ public class ReusableMethodsDonations extends BaseClass{
 	
 		
 		
+	  public void donationReceiptDownload(String filename) throws IOException, InterruptedException {
+		  
+		  CommonMethod.click( "ReceiptDonationButton");
+		  Thread.sleep(10000);
+		  CommonMethod.VerifyDownloadWithFileName(filename);
+		  CommonMethod.testlog("Pass","Downloaded Doantion Receipt successfully");
+	  }
+		
 		
 		
 }

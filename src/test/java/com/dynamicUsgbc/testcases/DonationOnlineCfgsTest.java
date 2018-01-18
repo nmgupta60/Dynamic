@@ -33,6 +33,7 @@ public class DonationOnlineCfgsTest extends BaseClass {
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();
 			reuse.VerifyReceiptDonation(rowNum, donationsheet);
+			reuse.donationReceiptDownload("USGBC INVOICE.pdf");
 			
             } 
 		

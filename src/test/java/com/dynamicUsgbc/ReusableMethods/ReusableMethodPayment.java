@@ -246,7 +246,9 @@ public class ReusableMethodPayment extends BaseClass {
 
 		};
 
+	
 		CommonMethod.click("PaymentSubmitButton");
+		CommonMethod.testlog("Pass", "Clicking on Submit Payment button");
 		Thread.sleep(3000);
 
 		List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));
@@ -255,16 +257,16 @@ public class ReusableMethodPayment extends BaseClass {
 		for (WebElement ErrorMsg : ErrorMsgList) {
 			System.out.println(ErrorMsg.getText());
 			if (ErrorMsg.getText().equals("")) {
-
+				CommonMethod.testlog("Pass", "All the Errors Verified Sucessfully");
 				continue;
 			} else
 
 			CommonMethod.assertEqualsMessage(ErrorMsg.getText(), (CommunityRegistrationErrorMsg[i]),
 					"Error Msg is not correct");
-
+			CommonMethod.testlog("Info", ErrorMsg.getText());
 			i++;
 		}
-
+		CommonMethod.testlog("Pass", "Total No of Errors are : "+Integer.toString(i));
 	}
 
 }
