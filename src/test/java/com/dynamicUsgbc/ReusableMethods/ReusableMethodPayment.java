@@ -155,9 +155,10 @@ public class ReusableMethodPayment extends BaseClass {
 	
 
 	
-	public void PaymentByCheck() throws IOException {
+	public void PaymentByCheck() throws IOException, InterruptedException {
 		CommonMethod.click("SelectPayByCheck");
 		CommonMethod.testlog("Pass", "Selecting the payment by check option");
+		Thread.sleep(2000);
 		CommonMethod.click("PaymentSubmitButton");
 		CommonMethod.testlog("Pass", "Clicking on the submit payment button ");
 	}

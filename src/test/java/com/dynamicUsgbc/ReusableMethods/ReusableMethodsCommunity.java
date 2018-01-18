@@ -134,7 +134,8 @@ public class ReusableMethodsCommunity extends BaseClass {
 
 		};
 
-		CommonMethod.click("CommunityContinue");
+		Thread.sleep(3000);
+		CommonMethod.moveToElementAndClick("CommunityContinue");
 		Thread.sleep(3000);
 
 		List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));

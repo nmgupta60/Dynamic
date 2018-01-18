@@ -33,6 +33,7 @@ public class ReusableMethodExamRegistration extends BaseClass{
 		CommonMethod.click("CommunityContinue");
 		CommonMethod.testlog( "Pass","Click on Continue button to proceed to SignIn Page");
 		Thread.sleep(3000);
+		
 		CommonMethod.assertcontainsmessage("VerifyTextSignIn", "Sign In for existing Users", "The User Didn't Redirected to SignIn Page");
 		CommonMethod.testlog("Pass","Redirected to SigIn Page successfully");
 	}

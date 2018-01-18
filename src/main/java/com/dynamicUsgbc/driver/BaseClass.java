@@ -3,6 +3,7 @@ package com.dynamicUsgbc.driver;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -10,12 +11,16 @@ import java.util.logging.Level;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -42,10 +47,6 @@ public class BaseClass {
 	public String SponsorshipUrl = "/sponsorship/content";
 	public String ExamRegistrationUrl = "/register-exams/exam";
 	public String StoreUrl = "/store";
-	
-
-
-
 	
 	
 	@BeforeClass(alwaysRun=true)
@@ -76,13 +77,14 @@ public class BaseClass {
 			   profile.setPreference("pdfjs.disabled", true);
 			         
 			   driver = new FirefoxDriver(profile);
+			   
 		
 		}
 		else if(browserName.equalsIgnoreCase("chrome")){
 
 			//work with chrome
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/DriverFiles/chromedriver.exe");
-			/* HashMap<String, Object> images = new HashMap<String, Object>(); 
+			HashMap<String, Object> images = new HashMap<String, Object>(); 
 		        images.put("images", 2); 
 
 		        HashMap<String, Object> prefs = new HashMap<String, Object>(); 
@@ -90,13 +92,15 @@ public class BaseClass {
 
 
 		        ChromeOptions options =new ChromeOptions(); 
-		        options.setExperimentalOption("prefs", prefs); 
+		        options.setExperimentalOption("prefs", prefs);
+		        options.addArguments("disable-infobars");
 
 		        DesiredCapabilities chromeCaps = DesiredCapabilities.chrome(); 
-		        chromeCaps.setCapability(ChromeOptions.CAPABILITY, options); */
+		        chromeCaps.setCapability(ChromeOptions.CAPABILITY, options);
+		        chromeCaps.setCapability("pageLoadStrategy", "none");
 
 		       
-			driver = new ChromeDriver();	
+			driver = new ChromeDriver(chromeCaps);	
 		}
 		
 		else if(browserName.equalsIgnoreCase("opera")){
@@ -108,8 +112,13 @@ public class BaseClass {
 		else if(browserName.equalsIgnoreCase("ie")){
 
 			//work with Internet explorer
-			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"/DriverFiles/IEDriverServer.exe");
-			driver = new InternetExplorerDriver();
+			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+			 capabilities.setCapability("InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION", true);
+			 //capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+			 //capabilities.setCapability("ignoreZoomSetting", true);
+			 //capabilities.setCapability("ignoreProtectedModeSettings", true);
+			//System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"/DriverFiles/IEDriverServer.exe");
+			driver = new InternetExplorerDriver(capabilities);
 			
 		}
 		
@@ -138,6 +147,10 @@ public class BaseClass {
 			
 		}
 		
+		/*SessionId session = ((FirefoxDriver)driver).getSessionId();
+		System.out.println("Session id: " + session.toString());*/
+		
+		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(80, TimeUnit.SECONDS);
@@ -183,13 +196,23 @@ public class BaseClass {
 	        }
 		CommonMethod.extent.endTest(CommonMethod.test);
 		CommonMethod.extent.flush();
+		
 	}
 	
 	
 	
 	
 	    @AfterClass(alwaysRun = true)
-		public void end(){	
-			driver.quit();
+		public void end(){
+	    	
+	    	driver.manage().deleteAllCookies();
+	    	if (driver == null) {
+	            return;
+	        }
+	    	SessionId session = ((FirefoxDriver)driver).getSessionId();
+			System.out.println("Session id: " + session.toString());
+	        driver.quit();
+	        driver = null;
+	    }
 		}
-	}
+	
