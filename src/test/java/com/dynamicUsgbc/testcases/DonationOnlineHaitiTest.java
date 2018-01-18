@@ -16,7 +16,8 @@ public class DonationOnlineHaitiTest extends BaseClass {
 	
 	@Test
 	@Parameters({"rowNum" ,"DonationSheet","PaymentSheet"})
-	public void DonationOnlineHaiti(int rowNum, String donationsheet,String paymentSheet) throws IOException {
+	public void DonationOnlineHaiti(int rowNum, String donationsheet,String paymentSheet) throws IOException, InterruptedException {
+		
 		
 		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
 		CommonMethod.ExtentReportConfig();

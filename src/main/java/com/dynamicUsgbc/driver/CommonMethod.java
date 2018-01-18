@@ -28,9 +28,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.SessionId;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -57,20 +57,22 @@ public class CommonMethod extends BaseClass  {
 	public static String screenshotfile = System.getProperty("user.dir") +"/Screenshots/";
     public static File extentconfigfile = new File(System.getProperty("user.dir") +"/src/main/resources/extent-config.xml");
     public static String Reportfile = System.getProperty("user.dir") +"/Report/USGBC-AutomationReport" + "_" + formatter.format(date) + ".html";
-	public static String downloadPath = System.getProperty("user.dir") +"/Downloads/";
+	
 	public WebDriverWait Wait = new WebDriverWait(driver, 30);
-	static WebElement element;
+	public static WebElement element;
 	public static String energyUploadXlsx = System.getProperty("user.dir") +"\\ARCDataTemplete\\arc_Data_Template.xlsm";
 	public static String waterUploadXlsx = System.getProperty("user.dir") +"\\ARCDataTemplete\\arc_Data_Template.xlsm";
 	public static String basepointFilePdf = System.getProperty("user.dir")+"\\ARCDataTemplete\\USGBC.pdf";
 	public static String prerequisiteTextFile = System.getProperty("user.dir")+"\\ARCDataTemplete\\txtFileUpload.txt";
 	public static String parkImageUpload = System.getProperty("user.dir")+"\\ARCDataTemplete\\Parking SJ.jpg";
 	
-	public static WebElement findElement(String objectLocater) throws IOException{
+	
+	
+	
+	public static WebElement findElement(final String objectLocater) throws IOException{
+		
+		WaitUntilVisibility(objectLocater);
 		//System.out.println(downloadPath);
-		
-		waitUntilvisibility(objectLocater);
-		
 		Properties OR = new Properties();
 		FileInputStream fp = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/ObjectLocator.properties");
 		OR.load(fp);		
@@ -213,13 +215,6 @@ public class CommonMethod extends BaseClass  {
 		
 	}
 	
-     public static void moveToElementAndClick(String objectLocator) throws IOException{
-		
-		Actions action = new Actions(driver);
-		action.moveToElement(findElement( objectLocator)).click().build().perform();
-		
-	}
-	
     public static String getTodaysDate() {
 		
     	Date date = new Date();
@@ -238,9 +233,9 @@ public class CommonMethod extends BaseClass  {
     }
 	
 	public static void pageloadwait(){
-		CommonMethod obj = new CommonMethod();
-	
-	obj.Wait.until( new Predicate<WebDriver>()
+		
+	CommonMethod object = new CommonMethod();
+	object.Wait.until( new Predicate<WebDriver>()
 			{ public boolean apply(WebDriver driver) 
 	{ return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
 	} } );}
@@ -339,8 +334,8 @@ public class CommonMethod extends BaseClass  {
     
     
     public static void waitJS () {
-    	CommonMethod obj = new CommonMethod();
-        //Wait for Javascript to load
+    	CommonMethod object = new CommonMethod();
+    	//Wait for Javascript to load
         ExpectedCondition<Boolean> jsLoad = driver -> ((JavascriptExecutor) driver)
                 .executeScript("return document.readyState").toString().equals("complete");
 
@@ -349,8 +344,8 @@ public class CommonMethod extends BaseClass  {
         ExpectedCondition<Boolean> jQueryLoad = driver -> ((Long) ((JavascriptExecutor) driver)
                 .executeScript("return jQuery.active") == 0);
 
-        obj.Wait.until(jsLoad);
-       obj.Wait.until(jQueryLoad);
+        object.Wait.until(jsLoad);
+       object.Wait.until(jQueryLoad);
     }
     
     public static void selectdropdownrandom(String objectLocator) throws IOException, InterruptedException{
@@ -415,6 +410,17 @@ public class CommonMethod extends BaseClass  {
     }
     
     //
+    
+    
+    public static void moveToLast() throws IOException {
+
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	js.executeScript("window.scrollTo(0, Math.max(document.documentElement.scrollHeight, document.body.scrollHeight, document.documentElement.clientHeight));");
+	 
+    }
+    
+    
+    
     
     public static String getValueUsingAngularJs(String objectLocater) throws IOException {
     	JavascriptExecutor js = ((JavascriptExecutor) driver);
@@ -764,13 +770,13 @@ public class CommonMethod extends BaseClass  {
 	
 	
 	public static void FluentWait(final String objectLocater){
-		CommonMethod obj = new CommonMethod();
+		
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)							
 				.withTimeout(30, TimeUnit.SECONDS) 			
 				.pollingEvery(2, TimeUnit.SECONDS) 			
 				.ignoring(NoSuchElementException.class);
 		
-			obj.Wait.until(new Function<WebDriver, WebElement>() {
+			wait.until(new Function<WebDriver, WebElement>() {
 			@Override
 			public WebElement  apply(WebDriver t) {
 				//return t.findElement(By.xpath(".//*[contains(text(),'+ Add')]"));
@@ -788,7 +794,7 @@ public class CommonMethod extends BaseClass  {
 	}
 	
 	public static WebElement WaitUntilPresence(String objectlocator) throws IOException{
-		CommonMethod obj = new CommonMethod();
+		CommonMethod object = new CommonMethod();
 		Properties OR = new Properties();
 		FileInputStream fp = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/ObjectLocator.properties");
 		OR.load(fp);
@@ -808,31 +814,31 @@ public class CommonMethod extends BaseClass  {
 		  
 		case "id":
 			
-			return (obj.Wait.until(ExpectedConditions.presenceOfElementLocated(By.id(objectvalue))));
+			return (object.Wait.until(ExpectedConditions.presenceOfElementLocated(By.id(objectvalue))));
 			
 		case "xpath":
 
-			return (obj.Wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(objectvalue))));
+			return (object.Wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(objectvalue))));
 			                
         case "name":
 
-        	return (obj.Wait.until(ExpectedConditions.presenceOfElementLocated(By.name(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.presenceOfElementLocated(By.name(objectvalue))));
 			               		  
         case "class":
 
-        	return (obj.Wait.until(ExpectedConditions.presenceOfElementLocated(By.className(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.presenceOfElementLocated(By.className(objectvalue))));
 
         case "tagname":
 
-        	return (obj.Wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(objectvalue))));
  
         case "css":
 			  
-        	return (obj.Wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(objectvalue))));
         
         case "linkText":
   			  
-        	return (obj.Wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(objectvalue))));
         default:
         	
         	return null;
@@ -841,55 +847,52 @@ public class CommonMethod extends BaseClass  {
 		
 	}
 	
-     public static WebElement waitUntilvisibility(String objectlocator) throws IOException{
-		
-    	 
-    	CommonMethod obj = new CommonMethod();
+     public static WebElement WaitUntilVisibility(String objectlocator) throws IOException{
+    	 CommonMethod object = new CommonMethod(); 
 		Properties OR = new Properties();
 		FileInputStream fp = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/ObjectLocator.properties");
 		OR.load(fp);
 		
 		
-		
 		String objecttypeandvalues = OR.getProperty(objectlocator);
 		
+		System.out.println(objecttypeandvalues);
 		String[] splits = objecttypeandvalues.split("~");
 		String objecttype = splits[0]; 
+		System.out.println("obj type: " + objecttype);
 		String objectvalue = splits[1];
-		
-		
-		
+		System.out.println("obj val: " + objectvalue);
 		switch(objecttype){
 		
 		
 		  
 		case "id":
 			
-			return (obj.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(objectvalue))));
+			return (object.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(objectvalue))));
 			
 		case "xpath":
 
-			return (obj.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(objectvalue))));
+			return (object.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(objectvalue))));
 			                
         case "name":
 
-        	return (obj.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(objectvalue))));
 			               		  
         case "class":
 
-        	return (obj.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(objectvalue))));
 
         case "tagname":
 
-        	return (obj.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(objectvalue))));
  
         case "css":
 			  
-        	return (obj.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(objectvalue))));
         
         case "linkText":
   			  
-        	return (obj.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(objectvalue))));
+        	return (object.Wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(objectvalue))));
         default:
         	
         	return null;
@@ -900,12 +903,16 @@ public class CommonMethod extends BaseClass  {
 	
      					/***** Added on Nov 27 11.30 AM *****/
      public static Boolean WaitUntilInVisibility(String objectlocator) throws IOException{
-    	 CommonMethod obj = new CommonMethod();
+    	 CommonMethod object = new CommonMethod();
  		Properties OR = new Properties();
  		FileInputStream fp = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/ObjectLocator.properties");
  		OR.load(fp);
- 
- 			
+ 		
+ 		FileInputStream fp1 = new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/DashbordLocator.properties");
+ 		OR.load(fp1);
+ 		
+ 		
+ 		
  		String objecttypeandvalues = OR.getProperty(objectlocator);
  		
  		System.out.println(objecttypeandvalues);
@@ -920,31 +927,31 @@ public class CommonMethod extends BaseClass  {
  		  
  		case "id":
  			
- 			return (obj.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(objectvalue))));
+ 			return (object.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(objectvalue))));
  			
  		case "xpath":
 
- 			return (obj.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(objectvalue))));
+ 			return (object.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(objectvalue))));
  			                
          case "name":
 
-         	return (obj.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.name(objectvalue))));
+         	return (object.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.name(objectvalue))));
  			               		  
          case "class":
 
-         	return (obj.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className(objectvalue))));
+         	return (object.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className(objectvalue))));
 
          case "tagname":
 
-         	return (obj.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.tagName(objectvalue))));
+         	return (object.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.tagName(objectvalue))));
   
          case "css":
  			  
-         	return (obj.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(objectvalue))));
+         	return (object.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(objectvalue))));
          
          case "linkText":
    			  
-         	return (obj.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.linkText(objectvalue))));
+         	return (object.Wait.until(ExpectedConditions.invisibilityOfElementLocated(By.linkText(objectvalue))));
          default:
          	
          	return null;

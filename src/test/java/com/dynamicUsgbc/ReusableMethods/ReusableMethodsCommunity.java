@@ -3,6 +3,7 @@ package com.dynamicUsgbc.ReusableMethods;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.poi.util.SystemOutLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -60,6 +61,7 @@ public class ReusableMethodsCommunity extends BaseClass {
 		CommonMethod.moveToElement("EmergingProffDOB");
 		CommonMethod.sendKeys("EmergingProffDOB", dob);
 		CommonMethod.testlog("Pass", "Entering date of birth ");
+		Thread.sleep(3000);
 		CommonMethod.click("HearEmail");
 		CommonMethod.testlog("Pass", "Selecting Hear from email");
 		CommonMethod.click("tickAgree");
@@ -134,25 +136,33 @@ public class ReusableMethodsCommunity extends BaseClass {
 
 		};
 
+
 		Thread.sleep(3000);
 		CommonMethod.moveToElementAndClick("CommunityContinue");
+
+		CommonMethod.moveToElement("CommunityContinue");
+		CommonMethod.click("CommunityContinue");
+		CommonMethod.testlog("Pass", "Clicking on Continue button");
+
 		Thread.sleep(3000);
 
 		List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));
 		System.out.println(ErrorMsgList.size());
+		
 		int i = 0;
 		for (WebElement ErrorMsg : ErrorMsgList) {
 			System.out.println(ErrorMsg.getText());
 			if (ErrorMsg.getText().equals("")) {
-
+				CommonMethod.testlog("Pass", "All the Errors Verified Sucessfully");
 				continue;
 			} else
 
 				CommonMethod.assertEqualsMessage(ErrorMsg.getText(), CommunityRegistrationErrorMsg[i],
 						"Error Msg is not correct");
+				CommonMethod.testlog("Info", ErrorMsg.getText());
 
 			i++;
 		}
-
+		CommonMethod.testlog("Pass", "Total No of Errors are : "+Integer.toString(i));
 	}
 }

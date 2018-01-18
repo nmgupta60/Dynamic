@@ -17,10 +17,9 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.SessionId;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -39,7 +38,7 @@ public class BaseClass {
 	public JavascriptExecutor js;
 	public String testName;
 	public String testScreenShotDirectory;
-	public String CommunityRegistrationUrl = "/community/registration";
+	public String CommunityRegistrationUrl = "community/registration";
 	public String DonationsHaitiUrl = "/donations/center/online/haiti";
 	public String DonationsUsgbcUrl = "/donations/center/online/usgbc";
 	public String DonationsCfgsUrl = "/donations/center/online/cfgs";
@@ -47,12 +46,12 @@ public class BaseClass {
 	public String SponsorshipUrl = "/sponsorship/content";
 	public String ExamRegistrationUrl = "/register-exams/exam";
 	public String StoreUrl = "/store";
-	
+	public static String downloadPath = System.getProperty("user.dir") +"\\Download\\";
 	
 	@BeforeClass(alwaysRun=true)
 	@Parameters({"browserName","environment"})
 	public void setup(String browserName,String environment) throws InterruptedException, IOException{
-
+		System.out.println("This is Before Class");
 		//Excel path configuration
 		data= new XlsReader(System.getProperty("user.dir")+"/DynamicUsgbc.xlsx"); 
 		
@@ -62,7 +61,8 @@ public class BaseClass {
 			
 			FirefoxProfile profile = new FirefoxProfile();
 			   profile.setPreference("browser.download.folderList", 2);
-			   profile.setPreference("browser.download.dir", System.getProperty("user.dir") +"/Downloads/");
+			   profile.setPreference("browser.download.dir", downloadPath);
+			   System.out.println(downloadPath);
 			   profile.setPreference("browser.download.manager.alertOnEXEOpen", false);
 			   profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/msword, application/csv, application/ris, text/csv, image/png, application/pdf, text/html, text/plain, application/zip, application/x-zip, application/x-zip-compressed, application/download, application/octet-stream");
 			   profile.setPreference("browser.download.manager.showWhenStarting", false);
@@ -77,32 +77,28 @@ public class BaseClass {
 			   profile.setPreference("pdfjs.disabled", true);
 			         
 			   driver = new FirefoxDriver(profile);
-			   
-		
+			  
 		}
 		else if(browserName.equalsIgnoreCase("chrome")){
 
 			//work with chrome
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/DriverFiles/chromedriver.exe");
-			HashMap<String, Object> images = new HashMap<String, Object>(); 
-		        images.put("images", 2); 
-
-		        HashMap<String, Object> prefs = new HashMap<String, Object>(); 
-		        prefs.put("profile.default_content_setting_values", images);
-
-
-		        ChromeOptions options =new ChromeOptions(); 
-		        options.setExperimentalOption("prefs", prefs);
-		        options.addArguments("disable-infobars");
-
-		        DesiredCapabilities chromeCaps = DesiredCapabilities.chrome(); 
-		        chromeCaps.setCapability(ChromeOptions.CAPABILITY, options);
-		        chromeCaps.setCapability("pageLoadStrategy", "none");
-
+			   HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+		       chromePrefs.put("profile.default_content_settings.popups", 0);
+		       chromePrefs.put("download.default_directory", downloadPath);
+		       ChromeOptions options = new ChromeOptions();
+		       HashMap<String, Object> chromeOptionsMap = new HashMap<String, Object>();
+		       options.setExperimentalOption("prefs", chromePrefs);
+		       options.addArguments("--test-type");
+		       options.addArguments("--disable-extensions"); //to disable browser extension popup
+		       DesiredCapabilities cap = DesiredCapabilities.chrome();
+		       cap.setCapability(ChromeOptions.CAPABILITY, chromeOptionsMap);
+		       cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		       cap.setCapability(ChromeOptions.CAPABILITY, options);
 		       
-			driver = new ChromeDriver(chromeCaps);	
+			driver = new ChromeDriver(cap);	
 		}
-		
+		                   
 		else if(browserName.equalsIgnoreCase("opera")){
 			//opera
 			System.setProperty("webdriver.opera.driver", System.getProperty("user.dir")+"/DriverFiles/operadriver.exe");
@@ -110,14 +106,12 @@ public class BaseClass {
 		}
 		
 		else if(browserName.equalsIgnoreCase("ie")){
-
-			//work with Internet explorer
+	       
 			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
-			 capabilities.setCapability("InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION", true);
-			 //capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
-			 //capabilities.setCapability("ignoreZoomSetting", true);
-			 //capabilities.setCapability("ignoreProtectedModeSettings", true);
-			//System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"/DriverFiles/IEDriverServer.exe");
+			capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+			capabilities.setCapability("disable-popup-blocking", true);
+			//work with Internet explorer
+			//System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\DriverFiles\\IEDriverServer.exe");
 			driver = new InternetExplorerDriver(capabilities);
 			
 		}
@@ -147,10 +141,6 @@ public class BaseClass {
 			
 		}
 		
-		/*SessionId session = ((FirefoxDriver)driver).getSessionId();
-		System.out.println("Session id: " + session.toString());*/
-		
-		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(80, TimeUnit.SECONDS);
@@ -179,7 +169,7 @@ public class BaseClass {
 			
 		}
 		Thread.sleep(5000);	
-		
+		System.out.println(driver.getTitle());
 	
 	}
 	
@@ -196,23 +186,14 @@ public class BaseClass {
 	        }
 		CommonMethod.extent.endTest(CommonMethod.test);
 		CommonMethod.extent.flush();
-		
 	}
 	
-	
-	
-	
-	    @AfterClass(alwaysRun = true)
-		public void end(){
-	    	
-	    	driver.manage().deleteAllCookies();
-	    	if (driver == null) {
-	            return;
-	        }
-	    	SessionId session = ((FirefoxDriver)driver).getSessionId();
-			System.out.println("Session id: " + session.toString());
-	        driver.quit();
-	        driver = null;
-	    }
-		}
-	
+	@AfterClass(alwaysRun = true)
+	public void end(){	
+	/*//driver.manage().deleteAllCookies();
+	driver.close();
+	driver.quit();*/
+	 if (driver != null)
+	 driver.quit();    	
+	 }
+   }
