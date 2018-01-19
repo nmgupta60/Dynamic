@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodPayment;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodSponsorship;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodsCommunity;
+import com.dynamicUsgbc.ReusableMethods.ReusableMethodsSignIn;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
 
@@ -25,11 +26,12 @@ public class SponsorshipFlowTest  extends BaseClass{
 		
 		ReusableMethodSponsorship reuse = new ReusableMethodSponsorship();
 		ReusableMethodPayment reusePay = new ReusableMethodPayment();
-		ReusableMethodsCommunity reuseComm= new ReusableMethodsCommunity();
+		ReusableMethodsSignIn reuseSign = new ReusableMethodsSignIn();
+		
 		try {
 			
 			reuse.Sponsorship(rowNum, sponsorshipSheet);
-			reuseComm.SignIn(rowNum, SignInSheet);
+			reuseSign.SignIn(rowNum, SignInSheet);
 			reusePay.verifySponsershipPaymentDetails(rowNum, sponsorshipSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyPaymentSuccessful();

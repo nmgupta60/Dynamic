@@ -8,6 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodsCommunity;
+import com.dynamicUsgbc.ReusableMethods.ReusableMethodsSignIn;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
 
@@ -23,11 +24,12 @@ public class CommunityRegLoggedInUserFlowTest extends BaseClass {
 		CommonMethod.setUrl(CommunityRegistrationUrl);
 		
 		ReusableMethodsCommunity reuse = new ReusableMethodsCommunity();
+		ReusableMethodsSignIn reuseSign = new ReusableMethodsSignIn();
 		
 		try {
 			
 			reuse.CommunityRegistration(rowNum, CommRegSheet);
-			reuse.SignIn(rowNum, signinSheet);
+			reuseSign.SignIn(rowNum, signinSheet);
 			reuse.verifyEditDetailsLoggedInUser(rowNum, CommRegSheet);
 			
             } 

@@ -12,20 +12,15 @@
     <parameter name="DonationSheet" value="Donation"/>
     <parameter name="SponsorshipSheet" value="Sponsorship"></parameter>
     <parameter name="ExamRegistrationSheet" value="ExamRegistration"/>
+    <parameter name="ProductSheet" value="Product"/>
     <parameter name="StoreSheet" value="Store"/>
     
 
     <classes>
-    	  <class name="com.dynamicUsgbc.testcases.DonationOnlineCfgsTest"></class>
-	      <class name="com.dynamicUsgbc.testcases.DonationOnlineHaitiTest"></class>
-   <!--  
-  	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/> 
-
-    <classes>  
-      
   
-   	 <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/> 
-
+      <class name="com.dynamicUsgbc.testcases.ProductAdminFlowTest"/> 
+  
+   	  <!-- <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/> 
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegLoggedInUserFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegPageErrorVerifyTest"/>
@@ -35,13 +30,10 @@
 	  <class name="com.dynamicUsgbc.testcases.DonationOnlineMyGreenAppleTest"/>
 	  <class name="com.dynamicUsgbc.testcases.DonationOnlineUsgbcTest"/>
 	  <class name="com.dynamicUsgbc.testcases.ExamRegistrationFlowTest"/>
-
 	  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/>
-	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/> 
--->
+	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>  -->
 
-	  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/> 
-	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>
+	  
       
 
     </classes>

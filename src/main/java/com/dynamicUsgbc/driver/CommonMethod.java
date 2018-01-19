@@ -20,6 +20,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -282,7 +285,7 @@ public class CommonMethod extends BaseClass  {
    
     	//System.out.println(CommonMethod.getText( objectLocater));
     	String Actual = CommonMethod.getText( objectLocater);
-		Assert.assertTrue(getText(objectLocater).contains(expected), message + " found " + Actual + " but expected "+ expected);
+		Assert.assertTrue(Actual.contains(expected), message );
 	}
   
     public static void assertcontains(String expected,String objectLocater , String message) throws IOException{
@@ -354,8 +357,7 @@ public class CommonMethod extends BaseClass  {
     	List<WebElement> ele = se.getOptions();
     	se.selectByIndex(new Random().nextInt(ele.size()));
     	Thread.sleep(2000);
-    	WebElement option = se.getFirstSelectedOption();
-    	System.out.println(option.getText());
+    	
     }
     
     
@@ -366,6 +368,15 @@ public class CommonMethod extends BaseClass  {
     	se.selectByVisibleText(value);
     	
     }
+    
+    public static String getFirstSelectedOptionDropdown (String objectLocator) throws IOException, InterruptedException {
+    	
+    	Select se = new Select( findElement(objectLocator));
+    	WebElement option = se.getFirstSelectedOption();
+    	String Text = option.getText();
+    	return Text;
+    }
+    
     
     //Is displayed Method (Assertion)
     public static void Isdisplayed(String objectLocater,String message) throws IOException{
@@ -386,10 +397,10 @@ public class CommonMethod extends BaseClass  {
     }
     
    public static void assertcurrentUrl( String expectedUrl,String message){
-    	System.out.println(driver.getCurrentUrl());
-    	System.out.println(expectedUrl);
+    	
     	Assert.assertTrue(driver.getCurrentUrl().equals(expectedUrl),message);
     }
+   
   public static void assertcurrentUrlTest(String expectedUrl){
 	   String current =driver.getCurrentUrl();
 	   System.out.println(current);
@@ -438,8 +449,8 @@ public class CommonMethod extends BaseClass  {
     
     public static void setUrl(String extension) {
     	
-    	System.out.println(driver.getCurrentUrl() + extension);
-    	driver.get(driver.getCurrentUrl() + extension);
+    	System.out.println(BaseUrl + extension);
+    	driver.get(BaseUrl + extension);
     }
     
     public static boolean isFileDownloaded(String downloadPath, String fileName) {
@@ -577,133 +588,7 @@ public class CommonMethod extends BaseClass  {
 			return ProgramID;
 			
     }
-    public static String randomnumberBNone(String Url) throws IOException, InterruptedException{
-    	
-      	 int random_num = 1;
-   		    Random t = new Random();
-   		    
-   		    // random integers in [1000, 800000]
-   		    random_num=	(t.nextInt(800000));
-   		    ProgramID = String.valueOf(random_num);
-   		    
-   		    System.out.println(ProgramID);
-   			Thread.sleep(1000);
-   			
-
-   			File file = new File(Url);
-
-   			if (!file.exists()) {
-   				file.createNewFile();
-   			}
-   			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-   			BufferedWriter bw = new BufferedWriter(fw);
-   			bw.write("BuildingNone" + " " + ProgramID);
-   			bw.close();
-   			return ProgramID;
-   			
-      }
-    public static String randomnumberBOther(String Url) throws IOException, InterruptedException{
-    	
-      	 int random_num = 1;
-   		    Random t = new Random();
-   		    
-   		    // random integers in [1000, 800000]
-   		    random_num=	(t.nextInt(800000));
-   		    ProgramID = String.valueOf(random_num);
-   		    
-   		    System.out.println(ProgramID);
-   			Thread.sleep(1000);
-   			
-
-   			File file = new File(Url);
-
-   			if (!file.exists()) {
-   				file.createNewFile();
-   			}
-   			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-   			BufferedWriter bw = new BufferedWriter(fw);
-   			bw.write("BuildingOther" + " " + ProgramID);
-   			bw.close();
-   			return ProgramID;
-   			
-      }
-    public static String randomnumberCLEED( String Url) throws IOException, InterruptedException{
-    	
-      	 int random_num = 1;
-   		    Random t = new Random();
-   		    
-   		    // random integers in [1000, 800000]
-   		    random_num=	(t.nextInt(800000));
-   		    ProgramID = String.valueOf(random_num);
-   		    
-   		    System.out.println(ProgramID);
-   			Thread.sleep(1000);
-   			
-
-   			File file = new File(Url);
-
-   			if (!file.exists()) {
-   				file.createNewFile();
-   			}
-   			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-   			BufferedWriter bw = new BufferedWriter(fw);
-   			bw.write("LEED For Communites TestProject" + " " + ProgramID);
-   			bw.close();
-   			return ProgramID;
-   			
-      }
-    public static String randomnumberCOther( String Url) throws IOException, InterruptedException{
-    	
-      	 int random_num = 1;
-   		    Random t = new Random();
-   		    
-   		    // random integers in [1000, 800000]
-   		    random_num=	(t.nextInt(800000));
-   		    ProgramID = String.valueOf(random_num);
-   		    
-   		    System.out.println(ProgramID);
-   			Thread.sleep(1000);
-   			
-
-   			File file = new File(Url);
-
-   			if (!file.exists()) {
-   				file.createNewFile();
-   			}
-   			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-   			BufferedWriter bw = new BufferedWriter(fw);
-   			bw.write("Communities Other TestProject" + " " + ProgramID);
-   			bw.close();
-   			return ProgramID;
-   			
-      }
-    public static String randomnumberCNone( String Url) throws IOException, InterruptedException{
-    	
-      	 int random_num = 1;
-   		    Random t = new Random();
-   		    
-   		    // random integers in [1000, 800000]
-   		    random_num=	(t.nextInt(800000));
-   		    ProgramID = String.valueOf(random_num);
-   		    
-   		    System.out.println(ProgramID);
-   			Thread.sleep(1000);
-   			
-
-   			File file = new File(Url);
-
-   			if (!file.exists()) {
-   				file.createNewFile();
-   			}
-   			FileWriter fw = new FileWriter(file.getAbsoluteFile());
-   			BufferedWriter bw = new BufferedWriter(fw);
-   			bw.write("Communities None TestProject" + " " + ProgramID);
-   			bw.close();
-   			return ProgramID;
-   			
-      }
-    
-    
+   
     public static String randomnumber(String Url) throws IOException, InterruptedException{
     	
    	 int random_num = 1;
@@ -1016,6 +901,11 @@ public class CommonMethod extends BaseClass  {
 	        e.printStackTrace();
 	    }
 	}
+
+
+
+
+	
 
 	
 	

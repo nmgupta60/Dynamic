@@ -8,34 +8,38 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodPayment;
+import com.dynamicUsgbc.ReusableMethods.ReusableMethodProduct;
+import com.dynamicUsgbc.ReusableMethods.ReusableMethodStore;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodsCommunity;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodsSignIn;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
 
-public class CommunityRegistrationFlowTest extends BaseClass {
+public class ProductAdminFlowTest extends BaseClass {
 	
 	@Test
-	@Parameters({"rowNum" ,"CommunityRegistrationSheet","SignInSheet","PaymentSheet"})
-	public void CommunityRegistrationFlow(int rowNum, String CommRegSheet, String signinSheet, String paymentSheet) throws IOException {
+	@Parameters({"rowNum" ,"StoreSheet","SignInSheet","ProductSheet","PaymentSheet"})
+	public void ProductAdminFlow(int rowNum, String storeSheet,String signInSheet,String productSheet,String paymentSheet) throws IOException {
 		
 		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
 		CommonMethod.ExtentReportConfig();
-		CommonMethod.test = CommonMethod.extent.startTest("Community Registration", "Verifies if Community Registration is done successfully").assignCategory("CheckCommunityRegistration");
-		CommonMethod.setUrl(CommunityRegistrationUrl);
+		CommonMethod.test = CommonMethod.extent.startTest("Product Admin Flow Test", "Verifies Product Functionality").assignCategory("CheckProduct");
+		CommonMethod.setUrl(SignInUrl);
 		
-		ReusableMethodsCommunity reuse = new ReusableMethodsCommunity();
+		
 		ReusableMethodPayment reusePay = new ReusableMethodPayment();
 		ReusableMethodsSignIn reuseSign = new ReusableMethodsSignIn();
-		
+		ReusableMethodProduct reusePro = new ReusableMethodProduct();
 		
 		try {
 			
-			reuse.CommunityRegistration(rowNum, CommRegSheet);
-			reuseSign.SignIn(rowNum, signinSheet);
+			reuseSign.adminSignIn(rowNum, signInSheet);
+			CommonMethod.setUrl(ProductUrl);
+			reusePro.productFlow(rowNum, productSheet);
+			reusePay.verifyProductPaymentDetails(rowNum, productSheet);
 			reusePay.PaymentByCC(rowNum, paymentSheet);
-			reusePay.verifyCommRegPaymentDetails(rowNum, CommRegSheet);
 			reusePay.verifyPaymentSuccessful();
+			reusePro.VerifyReceiptProduct(rowNum, productSheet);
 			
             } 
 		
@@ -44,7 +48,7 @@ public class CommunityRegistrationFlowTest extends BaseClass {
 			Error e1 = new Error(t.getMessage());
 			e1.setStackTrace(t.getStackTrace());
 			CommonMethod.testlogError( "<pre>" + e1.toString() + "</pre>");
-			CommonMethod.takeScreenshot("CommunityRegistrationFlow");
+			CommonMethod.takeScreenshot("ProductAdminFlow");
 			throw e1;
 		}
 	}
