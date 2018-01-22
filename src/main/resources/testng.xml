@@ -22,6 +22,7 @@
     <classes>  
 
       
+
         
          <class name="com.dynamicUsgbc.testcases.StorePaymentPageErrorVerifyTest"/>
          
@@ -41,6 +42,11 @@
    	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/>   
       <class name="com.dynamicUsgbc.testcases.ProductAdminFlowTest"/> 
   
+
+   
+      <class name="com.dynamicUsgbc.testcases.ProductAdminFlowByCheckTest"/> 
+  <!--  
+
    	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/> 
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegLoggedInUserFlowTest"/>
@@ -54,7 +60,12 @@
 	  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/> 
 	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/>
+<<<<<<< HEAD
 	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>  -->  
+=======
+	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>
+	  <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>   -->
+>>>>>>> 4e66ec1093525a1c23e30b683ef535c6f8e6ca33
 
 	  
 

@@ -59,25 +59,16 @@ public class ReusableMethodProduct extends BaseClass{
 		CommonMethod.testlog("pass", "Product Contact email is correct in receipt");
 		CommonMethod.assertEqualsmessage("ReceiptProductAmount", Amount , "Product amount is not correct");
 		CommonMethod.testlog("Pass", "Product amount is correct in receipt");
-		String str = CommonMethod.getText("ReceiptProductDate");
-		System.out.println(str);
-		String lines[] = str.split("\\R+");
-		System.out.println(lines[0]);
-		String Date = lines[1];
-		CommonMethod.assertEqualsMessage(Date, CommonMethod.getTodaysDate(), "Date is not correct");
+		CommonMethod.assertEqualsmessage("ReceiptProductDate", CommonMethod.getTodaysDate(), "Date is not correct");
 		CommonMethod.testlog("Pass","Date is correct in receipt");
 	}
 	
 	public void ProductPageErrorMessageVerify() throws InterruptedException, IOException {
 		String[] CommunityRegistrationErrorMsg = {
 	
-				"Street address field is required.",
-				"Street address line 2 field is required.",
-				"City field is required.",
-				"State field is required.",
-				"Zip code field is required.",
-				"Please select a shipping option.",
-				"Please mention how did you hear about the product."
+			    "Please select valid organization.",
+			    "Please enter a valid email."
+
 		};
 	
 		CommonMethod.click("CommunityContinue");
