@@ -21,7 +21,7 @@ public class SponsorshipFlowTest  extends BaseClass{
 		
 		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
 		CommonMethod.ExtentReportConfig();
-		CommonMethod.test = CommonMethod.extent.startTest("Sponsorship Community", "Verifies Online sponsorship Functionality").assignCategory("CheckSponsorship");
+		CommonMethod.test = CommonMethod.extent.startTest("Sponsorship Flow Test", "Verifies Online sponsorship Functionality").assignCategory("CheckSponsorship");
 		CommonMethod.setUrl(SponsorshipUrl);
 		
 		ReusableMethodSponsorship reuse = new ReusableMethodSponsorship();
@@ -44,7 +44,7 @@ public class SponsorshipFlowTest  extends BaseClass{
 			Error e1 = new Error(t.getMessage());
 			e1.setStackTrace(t.getStackTrace());
 			CommonMethod.testlogError( "<pre>" + e1.toString() + "</pre>");
-			CommonMethod.takeScreenshot("SponsorshipCommunity");
+			CommonMethod.takeScreenshot("SponsorshipFlow");
 			throw e1;
 		}
 	}
