@@ -28,7 +28,7 @@ public class ReusableMethodProduct extends BaseClass{
 	CommonMethod.testlog( "Pass","Entering primary contact email");
 	CommonMethod.selectdropdownrandom("ProductSubscription");
 	CommonMethod.testlog( "Pass","Selecting random subscription plan");
-	String subsPlan = CommonMethod.getFirstSelectedOption("ProductSubscription");
+	String subsPlan = CommonMethod.getFirstSelectedOptionDropdown("ProductSubscription");
 	System.out.println(subsPlan);
 	data.setCellData(sheetName,"Subscription" , rowNum, subsPlan );
 	String[] splits = CommonMethod.getText("ProductTotalAmount").split(" ");

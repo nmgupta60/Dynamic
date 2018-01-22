@@ -126,7 +126,7 @@ public class ReusableMethodMembership extends BaseClass{
 			CommonMethod.testlog("Pass", "Entering the organization name ");
 			CommonMethod.selectdropdown("CountryIncorporate",country );
 			CommonMethod.testlog("Pass", "Selecting the country incorporate Name");
-			CommonMethod.assertEqualsMessage(CommonMethod.getFirstSelectedOption("communityCountry"), country,"Country name didn't matched");
+			CommonMethod.assertEqualsMessage(CommonMethod.getFirstSelectedOptionDropdown("communityCountry"), country,"Country name didn't matched");
 			CommonMethod.testlog("Pass", "Country Name Matched");
 			CommonMethod.assertEqualsMessage(CommonMethod.getattributeValue("CommunityAdd1"), street1, "Street Adrress 1 didn't matched");
 			CommonMethod.testlog("Pass", "Addrress 1 verified succcessfully");
@@ -134,7 +134,7 @@ public class ReusableMethodMembership extends BaseClass{
 			CommonMethod.testlog("Pass", "Address 2 verified successfully");
 			CommonMethod.assertEqualsMessage(CommonMethod.getattributeValue("CommunityCity"), city, "City name didn't matched");
 			CommonMethod.testlog("Pass", "City Name verified successfully");
-			CommonMethod.assertEqualsMessage(CommonMethod.getFirstSelectedOption("CommunityState"), state, "State name didn't matched");
+			CommonMethod.assertEqualsMessage(CommonMethod.getFirstSelectedOptionDropdown("CommunityState"), state, "State name didn't matched");
 			CommonMethod.testlog("Pass", "State Name verified sucessfully");
 			CommonMethod.assertEqualsMessage(CommonMethod.getattributeValue("CommunityZip"), zip, "Zip code didn't matched");
 			CommonMethod.testlog("Pass", "Zip Code verified successfully");
