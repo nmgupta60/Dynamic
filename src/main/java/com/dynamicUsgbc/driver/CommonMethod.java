@@ -367,6 +367,14 @@ public class CommonMethod extends BaseClass  {
     	
     }
     
+    public static String getFirstSelectedOption(String objectLocator) throws IOException{
+    	
+    	Select se = new Select(findElement(objectLocator));
+    	return se.getFirstSelectedOption().getText();
+    	
+    }
+    
+    
     //Is displayed Method (Assertion)
     public static void Isdisplayed(String objectLocater,String message) throws IOException{
     	
@@ -1018,6 +1026,23 @@ public class CommonMethod extends BaseClass  {
 	}
 
 	
+	//field verification
 	
+	public static void filedVerification(String labelLocater, String inputLocater, String LabelName, String tagName) throws IOException {
+		
+		//class="col-md-7 col-xs-12 usgbc-form-input form-textarea"
+		//class="col-md-7 col-xs-12 usgbc-form-input form-text"
+		//class="col-md-7 col-xs-12 usgbc-form-input form-text"
+		//class="col-md-7 col-xs-12 usgbc-form-input membership-level form-select"
+		//class="col-md-7 col-xs-12 usgbc-form-input form-text"
+		
+		if(CommonMethod.findElement(labelLocater).isDisplayed()) {
+			CommonMethod.assertcontainsmessage(labelLocater,LabelName , "Input Label has been changed");
+			CommonMethod.testlog("Info", "Input Label is verified Sucessfully");
+			System.out.println(CommonMethod.findElement(inputLocater).getTagName());
+			CommonMethod.assertEqualsMessage(CommonMethod.findElement(inputLocater).getTagName(), tagName,"Input Type has been Changed");
+			CommonMethod.testlog("Info", "Input Type Verified Successfully");
+		}
+	}
 	
 }

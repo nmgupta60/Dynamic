@@ -46,6 +46,7 @@ public class BaseClass {
 	public String SponsorshipUrl = "/sponsorship/content";
 	public String ExamRegistrationUrl = "/register-exams/exam";
 	public String StoreUrl = "/store";
+	public String MembershipUrl="/membership/contact";
 	public static String downloadPath = System.getProperty("user.dir") +"\\Download\\";
 	
 	@BeforeClass(alwaysRun=true)

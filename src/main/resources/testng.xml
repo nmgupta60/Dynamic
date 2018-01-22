@@ -13,11 +13,16 @@
     <parameter name="SponsorshipSheet" value="Sponsorship"></parameter>
     <parameter name="ExamRegistrationSheet" value="ExamRegistration"/>
     <parameter name="StoreSheet" value="Store"/>
+    <parameter name="fieldSheet" value="fieldVerification"></parameter>
+    <parameter name="memberSheet" value="MembershipContact"></parameter>
+    <parameter name="registerSheet" value="Registration"></parameter>
     
     <classes>  
       
-  
-   	 <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/> 
+        
+    <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>    
+  	
+   	 <!-- <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/> 
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/> 
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegLoggedInUserFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegPageErrorVerifyTest"/>
@@ -28,7 +33,7 @@
 	  <class name="com.dynamicUsgbc.testcases.DonationOnlineUsgbcTest"/>
 	  <class name="com.dynamicUsgbc.testcases.ExamRegistrationFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/> 
-	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>
+	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/> -->
       
     </classes>
   </test> 
