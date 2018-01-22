@@ -30,7 +30,7 @@ public class DonationPaymentPageErrorVerifyTest extends BaseClass{
 				
 				reuse.DonationByOnline(rowNum, donationsheet);
 				reusePay.verifyDonationPaymentDetails(rowNum, donationsheet);
-				reusePay.CommunityRegistrationPaymentPageErrorMessageVerify();
+				reusePay.PaymentPageErrorMessageVerify();
 	            } 
 			
 			catch (Throwable t) {

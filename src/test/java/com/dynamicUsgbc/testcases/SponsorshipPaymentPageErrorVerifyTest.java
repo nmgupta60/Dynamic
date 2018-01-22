@@ -32,7 +32,7 @@ public class SponsorshipPaymentPageErrorVerifyTest extends BaseClass{
 			
 			reuse.Sponsorship(rowNum, sponsorshipSheet);
 			reuseSign.SignIn(rowNum, SignInSheet);
-			reusePay.CommunityRegistrationPaymentPageErrorMessageVerify();
+			reusePay.PaymentPageErrorMessageVerify();
             } 
 		
 		catch (Throwable t) {

@@ -33,7 +33,7 @@ public class StorePaymentPageErrorVerifyTest extends BaseClass{
 			reuse.ClickCheckout();
 			reuse.ShippingAddressProduct(rowNum, storeSheet);
 			reuseSign.SignIn(rowNum, signInSheet);
-			reusePay.CommunityRegistrationPaymentPageErrorMessageVerify();
+			reusePay.PaymentPageErrorMessageVerify();
 			
             } 
 		

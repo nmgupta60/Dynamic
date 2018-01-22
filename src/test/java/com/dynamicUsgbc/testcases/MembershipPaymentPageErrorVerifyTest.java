@@ -30,7 +30,7 @@ public class MembershipPaymentPageErrorVerifyTest extends BaseClass{
 			reuse.newUserRegistration(registerSheet, rowNum);
 			reuse.membershipContact(memberSheet, rowNum);
 			reuse.membershipDetails(memberSheet, rowNum);
-			reusePay.CommunityRegistrationPaymentPageErrorMessageVerify();
+			reusePay.PaymentPageErrorMessageVerify();
 			
             } 
 		
