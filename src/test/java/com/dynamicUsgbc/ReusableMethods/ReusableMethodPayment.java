@@ -259,7 +259,7 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass","Payment made successfully");
 	}
 
-	public void CommunityRegistrationPaymentPageErrorMessageVerify() throws InterruptedException, IOException {
+	public void PaymentPageErrorMessageVerify() throws InterruptedException, IOException {
 		String[] CommunityRegistrationErrorMsg = {
 
 				"Please enter Name on the card.", "Please enter card number.",
