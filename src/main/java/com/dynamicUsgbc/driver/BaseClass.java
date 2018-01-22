@@ -38,6 +38,8 @@ public class BaseClass {
 	public JavascriptExecutor js;
 	public String testName;
 	public String testScreenShotDirectory;
+	public static String BaseUrl = "http://test-dynamic-usgbc.pantheonsite.io/";
+	public static String ReceiptUrl = "http://test-dynamic-usgbc.pantheonsite.io/payment/reciept";
 	public String CommunityRegistrationUrl = "community/registration";
 	public String DonationsHaitiUrl = "/donations/center/online/haiti";
 	public String DonationsUsgbcUrl = "/donations/center/online/usgbc";
@@ -46,6 +48,8 @@ public class BaseClass {
 	public String SponsorshipUrl = "/sponsorship/content";
 	public String ExamRegistrationUrl = "/register-exams/exam";
 	public String StoreUrl = "/store";
+	public String ProductUrl = "/product/details";
+	public String SignInUrl = "/user/login";
 	public String MembershipUrl="/membership/contact";
 	public static String downloadPath = System.getProperty("user.dir") +"\\Download\\";
 	
@@ -198,3 +202,4 @@ public class BaseClass {
 	 driver.quit();    	
 	 }
    }
+

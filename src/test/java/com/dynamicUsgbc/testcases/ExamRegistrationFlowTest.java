@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodExamRegistration;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodPayment;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodsCommunity;
+import com.dynamicUsgbc.ReusableMethods.ReusableMethodsSignIn;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
 
@@ -25,13 +26,13 @@ public class ExamRegistrationFlowTest extends BaseClass {
 		CommonMethod.setUrl(ExamRegistrationUrl);
 		
 		ReusableMethodExamRegistration reuse = new ReusableMethodExamRegistration();
-		ReusableMethodsCommunity reuseComm = new ReusableMethodsCommunity();
 		ReusableMethodPayment reusePay = new ReusableMethodPayment();
+		ReusableMethodsSignIn reuseSign = new ReusableMethodsSignIn();
 		
 		try {
 			
 			reuse.ExamRegistration(rowNum, examRegSheet);
-			reuseComm.SignIn(rowNum, signinSheet);
+			reuseSign.SignIn(rowNum, signinSheet);
 			reuse.clickContinue();
 			reuse.CandidateInformation(rowNum, examRegSheet);
 			reusePay.verifyExamPaymentDetails(rowNum, examRegSheet);

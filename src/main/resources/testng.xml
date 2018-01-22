@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="VisualTest">
+<suite name="UsgbcTest">
     
   <test name="USGBC">
     <parameter name="browserName"  value="firefox"/>
@@ -12,17 +12,24 @@
     <parameter name="DonationSheet" value="Donation"/>
     <parameter name="SponsorshipSheet" value="Sponsorship"></parameter>
     <parameter name="ExamRegistrationSheet" value="ExamRegistration"/>
+    <parameter name="ProductSheet" value="Product"/>
     <parameter name="StoreSheet" value="Store"/>
     <parameter name="fieldSheet" value="fieldVerification"></parameter>
     <parameter name="memberSheet" value="MembershipContact"></parameter>
     <parameter name="registerSheet" value="Registration"></parameter>
     
+
     <classes>  
       
         
     <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>    
   	
    	 <!-- <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/> 
+    <classes>
+  
+      <class name="com.dynamicUsgbc.testcases.ProductAdminFlowTest"/> 
+  
+   	  <!-- <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/> 
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegLoggedInUserFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegPageErrorVerifyTest"/>
@@ -34,7 +41,16 @@
 	  <class name="com.dynamicUsgbc.testcases.ExamRegistrationFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/> 
 	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/> -->
+	  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/>
+	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>  -->
+
+	  
+
       
+
     </classes>
   </test> 
+  
+ 
+  
 </suite>

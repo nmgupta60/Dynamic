@@ -77,21 +77,6 @@ public class ReusableMethodsCommunity extends BaseClass {
 				"The User Didn't Redirected to SignIn Page");
 	}
 
-	public void SignIn(int rowNum, String sheetName) throws IOException, InterruptedException {
-
-		String email = data.getCellData(sheetName, "Email", rowNum);
-		String password = data.getCellData(sheetName, "Password", rowNum);
-
-		CommonMethod.sendKeys("EmailId", email);
-		CommonMethod.testlog("Pass", "Entering Email Id");
-		CommonMethod.sendKeys("password", password);
-		CommonMethod.testlog("Pass", "Entering Password");
-		CommonMethod.click("CommunityContinue");
-		CommonMethod.testlog("Pass", "Clicked on Sign and Continue");
-		/*CommonMethod.assertcontainsmessage("VerifyTextOnPayment", "Confirmation",
-				"Didn't Rediredted to the payment page");*/
-		CommonMethod.testlog("Pass", "Welcome to the payment page");
-	}
 
 	public void verifyEditDetailsLoggedInUser(int rowNum, String sheetName) throws IOException, InterruptedException {
 		
@@ -135,9 +120,15 @@ public class ReusableMethodsCommunity extends BaseClass {
 				"Please mention how did you hear about the product.", "Please agree to our terms."
 
 		};
+
+
+		Thread.sleep(3000);
+		CommonMethod.click("CommunityContinue");
+
 		CommonMethod.moveToElement("CommunityContinue");
 		CommonMethod.click("CommunityContinue");
 		CommonMethod.testlog("Pass", "Clicking on Continue button");
+
 		Thread.sleep(3000);
 
 		List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));
