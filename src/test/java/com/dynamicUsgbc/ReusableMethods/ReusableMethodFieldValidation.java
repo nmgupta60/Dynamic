@@ -21,7 +21,7 @@ public class ReusableMethodFieldValidation extends BaseClass{
 				CommonMethod.testlog("Pass", "Button input type is present on the page");	
 			}
 			else {
-			   CommonMethod.filedVerification(labelLocater, inputLocater, labelText, tagName);	
+			   CommonMethod.fieldVerification(labelLocater, inputLocater, labelText, tagName);	
 			}	
 		   }
 	       	   CommonMethod.testlog("Pass", "All the Input fields verified successfully");

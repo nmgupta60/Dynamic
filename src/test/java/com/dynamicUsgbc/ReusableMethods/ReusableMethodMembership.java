@@ -162,5 +162,44 @@ public class ReusableMethodMembership extends BaseClass{
 		
 		
 		
+		public void SignUpErrorMessageVerify() throws InterruptedException, IOException {
+			String[] CommunityRegistrationErrorMsg = {
+
+					"Please enter a valid email.", "First Name cannot be empty",
+					"Last Name cannot be empty", "Password cannot be empty", "Confirm password cannot be empty"
+			};
+
+
+			Thread.sleep(3000);
+			CommonMethod.click("ClickSignIn");
+			CommonMethod.testlog("Pass", "Clicking on signin button");
+			CommonMethod.click("ClickRegisterHere");
+			CommonMethod.testlog("Pass", "Click on register here link");
+			CommonMethod.click("CommunityContinue");
+			CommonMethod.testlog("Pass", "Clicking on continue button to continue ");
+
+			Thread.sleep(3000);
+
+			List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));
+			System.out.println(ErrorMsgList.size());
+			
+			int i = 0;
+			for (WebElement ErrorMsg : ErrorMsgList) {
+				System.out.println(ErrorMsg.getText());
+				if (ErrorMsg.getText().equals("")) {
+					CommonMethod.testlog("Pass", "All the Errors Verified Sucessfully");
+					continue;
+				} else
+
+					CommonMethod.assertEqualsMessage(ErrorMsg.getText(), CommunityRegistrationErrorMsg[i],
+							"Error Msg is not correct");
+					CommonMethod.testlog("Info", ErrorMsg.getText());
+
+				i++;
+			}
+			CommonMethod.testlog("Pass", "Total No of Errors are : "+Integer.toString(i));
+		}
+		
+		
 		
 }

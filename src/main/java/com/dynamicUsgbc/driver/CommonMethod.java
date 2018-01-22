@@ -376,6 +376,8 @@ public class CommonMethod extends BaseClass  {
     }
     
     
+    
+    
     //Is displayed Method (Assertion)
     public static void Isdisplayed(String objectLocater,String message) throws IOException{
     	
@@ -1029,7 +1031,7 @@ public class CommonMethod extends BaseClass  {
 	
 	//field verification
 	
-	public static void filedVerification(String labelLocater, String inputLocater, String LabelName, String tagName) throws IOException {
+	public static void fieldVerification(String labelLocater, String inputLocater, String LabelName, String tagName) throws IOException {
 		
 		//class="col-md-7 col-xs-12 usgbc-form-input form-textarea"
 		//class="col-md-7 col-xs-12 usgbc-form-input form-text"
