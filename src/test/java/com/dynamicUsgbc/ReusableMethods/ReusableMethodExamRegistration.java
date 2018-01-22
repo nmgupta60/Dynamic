@@ -147,4 +147,26 @@ public class ReusableMethodExamRegistration extends BaseClass{
 	}
     
     
+    public void VerifyReceiptExamination(int rowNum, String sheetName) throws IOException {
+		
+    	String examType      = data.getCellData(sheetName, "ExamType", rowNum);
+    	String amount      = data.getCellData(sheetName, "Amount", rowNum) + ".00";
+		String language   = data.getCellData(sheetName, "Language", rowNum);
+		
+
+		CommonMethod.assertEqualsmessage("VerifyExaminationType", examType, "Examination Type is not correct");
+		CommonMethod.testlog("Pass","Examination Type is correct");
+		CommonMethod.assertEqualsmessage("VerifyExaminationSpeciality", examType.replace("Exam", ""), "Examination Specialist is not correct");
+		CommonMethod.testlog("Pass","Examination Specialist is correct");
+		CommonMethod.assertEqualsmessage("VerifyExaminationLanguage", language, "Language is not correct");
+		CommonMethod.testlog("Pass","Examination Language is correct");
+		CommonMethod.assertEqualsmessage("VerifyExaminationFees", amount, "Exam Fee is not correct");
+		CommonMethod.testlog("Pass","Examination Fee is correct");
+		CommonMethod.assertEqualsmessage("VerifyExaminationOrderDate", CommonMethod.getTodaysDate(), "Order Date is not correct");
+		CommonMethod.testlog("Pass","Exam Order date date is correct");
+		CommonMethod.assertEqualsmessage("VerifyExaminationExpirationDate", CommonMethod.getDatefutureYear(1), "Expiration Date is not correct");
+		CommonMethod.testlog("Pass","Expiration Date is correct");
+		
+	}
+    
 }

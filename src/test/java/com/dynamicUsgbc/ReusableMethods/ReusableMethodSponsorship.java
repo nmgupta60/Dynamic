@@ -100,7 +100,8 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 				"Street address field is required.",
 				"Street address line 2 field is required.",
 				"City field is required.",
-				"Postal code field is required."
+				"State field is required.",
+				"Zip code field is required."
 		};
 	
 		CommonMethod.click("CommunityContinue");

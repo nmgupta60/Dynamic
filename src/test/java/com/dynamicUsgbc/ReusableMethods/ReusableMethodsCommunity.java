@@ -150,4 +150,40 @@ public class ReusableMethodsCommunity extends BaseClass {
 		}
 		CommonMethod.testlog("Pass", "Total No of Errors are : "+Integer.toString(i));
 	}
+	
+	
+	public void CommunityLogInPageErrorMessageVerify() throws InterruptedException, IOException {
+		String[] CommunityRegistrationErrorMsg = {
+
+				"Please enter a valid email."
+
+		};
+
+
+		Thread.sleep(3000);
+		CommonMethod.click("CommunityContinue");
+		CommonMethod.testlog("Pass", "Clicking on Continue button");
+
+		Thread.sleep(3000);
+
+		List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));
+		System.out.println(ErrorMsgList.size());
+		
+		int i = 0;
+		for (WebElement ErrorMsg : ErrorMsgList) {
+			System.out.println(ErrorMsg.getText());
+			if (ErrorMsg.getText().equals("")) {
+				CommonMethod.testlog("Pass", "All the Errors Verified Sucessfully");
+				continue;
+			} else
+
+				CommonMethod.assertEqualsMessage(ErrorMsg.getText(), CommunityRegistrationErrorMsg[i],
+						"Error Msg is not correct");
+				CommonMethod.testlog("Info", ErrorMsg.getText());
+
+			i++;
+		}
+		CommonMethod.testlog("Pass", "Total No of Errors are : "+Integer.toString(i));
+	}
+	
 }

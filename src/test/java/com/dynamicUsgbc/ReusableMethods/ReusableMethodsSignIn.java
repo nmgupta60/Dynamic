@@ -18,9 +18,9 @@ public class ReusableMethodsSignIn extends BaseClass {
 		String email = data.getCellData(sheetName, "Email", rowNum);
 		String password = data.getCellData(sheetName, "Password", rowNum);
 
-		CommonMethod.sendKeys("EmailId", email);
+		CommonMethod.sendKeys("SignInEmailId", email);
 		CommonMethod.testlog("Pass", "Entering Email Id");
-		CommonMethod.sendKeys("password", password);
+		CommonMethod.sendKeys("SignInpassword", password);
 		CommonMethod.testlog("Pass", "Entering Password");
 		CommonMethod.click("CommunityContinue");
 		CommonMethod.testlog("Pass", "Clicked on Sign and Continue");

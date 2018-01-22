@@ -132,10 +132,7 @@ public class ReusableMethodStore extends BaseClass{
 	
 			i++;
 		}
-
-}	
-	
-	
-	
+    }	
+		
 }
 

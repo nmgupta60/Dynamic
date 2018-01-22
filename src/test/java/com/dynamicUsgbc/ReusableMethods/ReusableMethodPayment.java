@@ -311,31 +311,31 @@ public class ReusableMethodPayment extends BaseClass {
 		
 		String membershipAmount = amount + ".00";
 
-		CommonMethod.assertEqualsmessage("MembershipPaymentOrganization", organizationName, "Organization name is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentOrganization", organizationName, "Organization name is not correct");
 		CommonMethod.testlog("Pass", "Organization name is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentCountry", countryCode, "Country Code is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentCountry", countryCode, "Country Code is not correct");
 		CommonMethod.testlog("pass", "Country name is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentLevel", level.toLowerCase(), "Membership Level is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentLevel", level.toLowerCase(), "Membership Level is not correct");
 		CommonMethod.testlog("pass", "Membership Level is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentTerm", term+"s" , "Term Year is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentTerm", term+"s" , "Term Year is not correct");
 		CommonMethod.testlog("Pass", "Term Year is correct");
 		//CommonMethod.assertEqualsmessage("MembershipPaymentEffective", CommonMethod.getTodaysDate() +" to "+ CommonMethod.getDatefutureYear(1) , "Validity date is not correct");
 		CommonMethod.testlog("Pass", "Validity date is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentAmount", membershipAmount , "Membership amount is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentAmount", membershipAmount , "Membership amount is not correct");
 		CommonMethod.testlog("Pass", "Membership amount is correct");
 		//CommonMethod.assertEqualsmessage("MembershipPaymentName", name , "User Name is not correct");
 		CommonMethod.testlog("Pass", "User Name is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentAddress", street1 + " " + street2 , " Address is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentAddress", street1 + " " + street2 , " Address is not correct");
 		CommonMethod.testlog("Pass", "Address is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentCity", city, "Membership city  is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentCity", city, "Membership city  is not correct");
 		CommonMethod.testlog("Pass", "Membership city is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentState", state, "Membership state is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentState", state, "Membership state is not correct");
 		CommonMethod.testlog("Pass", "Membership state is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentzip", zip , "Membership Zip is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentzip", zip , "Membership Zip is not correct");
 		CommonMethod.testlog("Pass", "Membership zip is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentCountry", countryCode, "Sponsorship Country is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentCountry", countryCode, "Sponsorship Country is not correct");
 		CommonMethod.testlog("Pass", "Sponsorship country is correct");
-		CommonMethod.assertEqualsmessage("MembershipPaymentEmail", email, "Membership email is not correct");
+		CommonMethod.assertEqualsmessage("VerifyMembershipPaymentEmail", email, "Membership email is not correct");
 		CommonMethod.testlog("Pass", "Membership email is corret");
 	}
 	

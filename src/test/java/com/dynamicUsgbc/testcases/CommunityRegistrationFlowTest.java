@@ -36,6 +36,7 @@ public class CommunityRegistrationFlowTest extends BaseClass {
 			reusePay.PaymentByCC(rowNum, paymentSheet);
 			reusePay.verifyCommRegPaymentDetails(rowNum, CommRegSheet);
 			reusePay.verifyPaymentSuccessful();
+			reuse.VerifyReceiptCommunity(rowNum,CommRegSheet );
 			
             } 
 		

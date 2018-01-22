@@ -19,28 +19,28 @@ public class ReusableMethodMembership extends BaseClass{
 			String lastName  = data.getCellData(sheetName, "LastName" , rowNum);
 			String password  = data.getCellData(sheetName, "Password" , rowNum);
 			
-			CommonMethod.click("ClickSignIn");
+			CommonMethod.click("MemberShipClickSignIn");
 			CommonMethod.testlog("Pass", "Clicking on signin button");
-			CommonMethod.click("ClickRegisterHere");
+			CommonMethod.click("MemberShipClickRegisterHere");
 			CommonMethod.testlog("Pass", "Click on register here link");
-			CommonMethod.sendKeys("FirstName", firstName);
+			CommonMethod.sendKeys("MemberShipFirstName", firstName);
 			CommonMethod.testlog("Pass", "Inputting the first name");
-			CommonMethod.sendKeys("LastName", lastName);
+			CommonMethod.sendKeys("MemberShipLastName", lastName);
 			CommonMethod.testlog("Pass", "Inputing the last name");
-			CommonMethod.click("EmailId"); 
+			CommonMethod.click("MemberShipEmailId"); 
 			Random randomGenerator = new Random();  
-			int randomInt = randomGenerator.nextInt(1000);  
+			int randomInt = randomGenerator.nextInt(10000);  
 			data.setCellData(sheetName, "Email", rowNum, "testuser"+ randomInt +"@email.com");
 			CommonMethod.testlog("Pass", "Inputiing the Random Email Id in Excel Sheet");
-			CommonMethod.sendKeys("EmailId","testuser"+ randomInt +"@email.com");
+			CommonMethod.sendKeys("MemberShipEmailId","testuser"+ randomInt +"@email.com");
 			CommonMethod.testlog("Pass", "Inputting the Random Email Id");
-			CommonMethod.sendKeys("Password", password);
+			CommonMethod.sendKeys("MemberShipPassword", password);
 			CommonMethod.testlog("Pass", "Inputting the Pasword");
-			CommonMethod.sendKeys("ConfirmPassword", password);
+			CommonMethod.sendKeys("MemberShipConfirmPassword", password);
 			CommonMethod.testlog("Pass", "Inputing passeord to confirm");
 			CommonMethod.click("CommunityContinue");
 			CommonMethod.testlog("Pass", "Clicking on continue button to continue ");
-			CommonMethod.assertEqualsmessage("VerifyRegister", "You are signed in as "+firstName+" "+lastName+".", "Unable to Register");
+			CommonMethod.assertEqualsmessage("MemberShipVerifyRegister", "You are signed in as "+firstName+" "+lastName+".", "Unable to Register");
 			CommonMethod.testlog("Pass", "Verifying the User name on the contact page");
 			CommonMethod.testlog("Pass", "User Registration module Tested Successfully");
 			
@@ -61,9 +61,9 @@ public class ReusableMethodMembership extends BaseClass{
 			String zip        = data.getCellData(sheetName, "Zip", rowNum);
 			
 			
-			CommonMethod.sendKeys("AttentionTo", attentionTo);
+			CommonMethod.sendKeys("MemberShipAttentionTo", attentionTo);
 			CommonMethod.testlog("Pass", "Entering value in the DedicationTo");
-			CommonMethod.sendKeys("Company", company);
+			CommonMethod.sendKeys("MemberShipCompany", company);
 			CommonMethod.testlog("Pass", "Entering the Company Name");
 			CommonMethod.selectdropdown("communityCountry", country);
 			CommonMethod.testlog("Pass", "Selecting the Country Name");
@@ -86,7 +86,7 @@ public class ReusableMethodMembership extends BaseClass{
 			CommonMethod.testlog("Pass", "Clicking on the agreement checkbox");
 			CommonMethod.click("CommunityContinue");
 			CommonMethod.testlog("Pass", "Clicking on the Continue button");
-			CommonMethod.assertEqualsmessage("VerifyContact", "Organization details", "Contact Page Detail is Incomplete");
+			CommonMethod.assertEqualsmessage("MemberShipVerifyContact", "Organization details", "Contact Page Detail is Incomplete");
 			CommonMethod.testlog("Pass", "Sucessfully Rediredted to Membership Page");
 		}
 		
@@ -122,9 +122,9 @@ public class ReusableMethodMembership extends BaseClass{
 			int randomInt = randomGenerator.nextInt(1000);  
 			data.setCellData(sheetName, "OrganizationName", rowNum, "Group"+ randomInt +"Technologies");
 			CommonMethod.testlog("Pass", "Entering the organization name in the excel sheet");
-		    CommonMethod.sendKeys("OrganizationName", "Group"+ randomInt +"Technologies");
+		    CommonMethod.sendKeys("MemberShipOrganizationName", "Group"+ randomInt +"Technologies");
 			CommonMethod.testlog("Pass", "Entering the organization name ");
-			CommonMethod.selectdropdown("CountryIncorporate",country );
+			CommonMethod.selectdropdown("MemberShipCountryIncorporate",country );
 			CommonMethod.testlog("Pass", "Selecting the country incorporate Name");
 			CommonMethod.assertEqualsMessage(CommonMethod.getFirstSelectedOptionDropdown("communityCountry"), country,"Country name didn't matched");
 			CommonMethod.testlog("Pass", "Country Name Matched");
@@ -138,15 +138,15 @@ public class ReusableMethodMembership extends BaseClass{
 			CommonMethod.testlog("Pass", "State Name verified sucessfully");
 			CommonMethod.assertEqualsMessage(CommonMethod.getattributeValue("CommunityZip"), zip, "Zip code didn't matched");
 			CommonMethod.testlog("Pass", "Zip Code verified successfully");
-			CommonMethod.sendKeys("Website", website);
+			CommonMethod.sendKeys("MemberShipWebsite", website);
 			CommonMethod.testlog("Pass", "Entering the website");
-			CommonMethod.sendKeys("EmailId", email);
+			CommonMethod.sendKeys("MemberShipEmailId", email);
 			CommonMethod.testlog("Pass", "Entering the mail id");
-			CommonMethod.selectdropdown("IndustryCategory", indCategory);
+			CommonMethod.selectdropdown("MemberShipIndustryCategory", indCategory);
 			CommonMethod.testlog("Pass", "Selecting the industry category");
-			CommonMethod.selectdropdown("IndustrySubCategory", subCategory);
+			CommonMethod.selectdropdown("MemberShipIndustrySubCategory", subCategory);
 			CommonMethod.testlog("Pass", "Selecting the subCategory");
-			CommonMethod.selectdropdown("RevenueRange", revenue);
+			CommonMethod.selectdropdown("MemberShipRevenueRange", revenue);
 			CommonMethod.testlog("Pass", "Selecting the Revenue");
 			String[] splits = CommonMethod.getText("MembershipFee").split(" ");
 			String Amount = splits[1];
@@ -162,20 +162,59 @@ public class ReusableMethodMembership extends BaseClass{
 		
 		
 		
-		public void SignUpErrorMessageVerify() throws InterruptedException, IOException {
+		public void MembershipSignUpErrorMessageVerify() throws InterruptedException, IOException {
 			String[] CommunityRegistrationErrorMsg = {
 
-					"Please enter a valid email.", "First Name cannot be empty",
-					"Last Name cannot be empty", "Password cannot be empty", "Confirm password cannot be empty"
+					"First Name cannot be empty",
+					"Last Name cannot be empty", "Please enter a valid email.",
+					"Password cannot be empty", "Confirm password cannot be empty"
 			};
 
 
 			Thread.sleep(3000);
-			CommonMethod.click("ClickSignIn");
+			CommonMethod.click("MemberShipClickSignIn");
 			CommonMethod.testlog("Pass", "Clicking on signin button");
-			CommonMethod.click("ClickRegisterHere");
+			CommonMethod.click("MemberShipClickRegisterHere");
 			CommonMethod.testlog("Pass", "Click on register here link");
 			CommonMethod.click("CommunityContinue");
+			CommonMethod.testlog("Pass", "Clicking on continue button to continue ");
+
+			Thread.sleep(3000);
+
+			List<WebElement> ErrorMsgList = driver.findElements(By.className("messages messages--error"));
+			System.out.println(ErrorMsgList.size());
+			
+			int i = 0;
+			for (WebElement ErrorMsg : ErrorMsgList) {
+				System.out.println(ErrorMsg.getText());
+				if (ErrorMsg.getText().equals("")) {
+					CommonMethod.testlog("Pass", "All the Errors Verified Sucessfully");
+					continue;
+				} else
+
+					CommonMethod.assertEqualsMessage(ErrorMsg.getText(), CommunityRegistrationErrorMsg[i],
+							"Error Msg is not correct");
+					CommonMethod.testlog("Info", ErrorMsg.getText());
+
+				i++;
+			}
+			CommonMethod.testlog("Pass", "Total No of Errors are : "+Integer.toString(i));
+		}
+		
+		
+		
+		public void MembershipContactPageErrorMessageVerify() throws InterruptedException, IOException {
+			String[] CommunityRegistrationErrorMsg = {
+
+					 "Street address field is required.","Street address line 2 field is required.",
+					 "City field is required.","State field is required.","Zip code field is required.",
+					 "Please agree to our terms."
+					
+			};
+
+
+			Thread.sleep(3000);
+			CommonMethod.click("MembershipContactContinueButton");
 			CommonMethod.testlog("Pass", "Clicking on continue button to continue ");
 
 			Thread.sleep(3000);
@@ -201,5 +240,63 @@ public class ReusableMethodMembership extends BaseClass{
 		}
 		
 		
+		
+		public void MembershipRegistrationPageErrorMessageVerify() throws InterruptedException, IOException {
+			String[] CommunityRegistrationErrorMsg = {
+
+					 "Please specify your organization name.","Please specify your website.",
+					 "Please specify your industry category.","Please specify your industry sub-category.",
+					 "Please choose your revenue scale."		
+			};
+			Thread.sleep(3000);
+			CommonMethod.click("MembershipRegistrationContinueButton");
+			CommonMethod.testlog("Pass", "Clicking on continue button to continue ");
+			Thread.sleep(3000);
+			List<WebElement> ErrorMsgList = driver.findElements(By.className("input-error-desc"));
+			System.out.println(ErrorMsgList.size());
+			
+			int i = 0;
+			for (WebElement ErrorMsg : ErrorMsgList) {
+				System.out.println(ErrorMsg.getText());
+				if (ErrorMsg.getText().equals("")) {
+					CommonMethod.testlog("Pass", "All the Errors Verified Sucessfully");
+					continue;
+				} else
+
+					CommonMethod.assertEqualsMessage(ErrorMsg.getText(), CommunityRegistrationErrorMsg[i],
+							"Error Msg is not correct");
+					CommonMethod.testlog("Info", ErrorMsg.getText());
+
+				i++;
+			}
+			CommonMethod.testlog("Pass", "Total No of Errors are : "+Integer.toString(i));
+		}
+		
+		
+		
+		public void selectPayByCheck() throws IOException {
+			CommonMethod.click("MembershipSelectPayByCheck");
+			CommonMethod.click("MembershipClickContinueButton");
+		}
+		
+		public void VerifyReceiptMembership(int rowNum, String sheetName) throws IOException {
+			
+			String amount      = data.getCellData(sheetName, "TotalAmount", rowNum) + ".00";
+			String orgName   = data.getCellData(sheetName, "OrganizationName", rowNum);
+			String membershipLevel   = data.getCellData(sheetName, "MembershipLevel", rowNum);
+			
+			CommonMethod.assertEqualsmessage("VerifyMembershipReceiptDate", CommonMethod.getTodaysDate(), "Billing Date is not correct");
+			CommonMethod.testlog("Pass","Membership Billing Date is correct");
+			CommonMethod.assertEqualsmessage("VerifyMembershipReceiptAmount", amount, "Amount is not correct");
+			CommonMethod.testlog("Pass","Membership Amount is correct");
+			CommonMethod.assertEqualsmessage("VerifyMembershipReceiptOrganization", orgName, "Organization Name is not correct");
+			CommonMethod.testlog("Pass","Organization Name is correct");
+			CommonMethod.assertEqualsmessage("VerifyMembershipReceiptLevel",membershipLevel.toLowerCase() , "Membership Level is not correct");
+			CommonMethod.testlog("Pass","MembershipLevel is correct");
+			CommonMethod.assertEqualsmessage("VerifyMembershipReceiptValidity", CommonMethod.getDatefutureYear(1), "Valid till date is not correct");
+			CommonMethod.testlog("Pass","Valid till Date is correct");
+			CommonMethod.assertEqualsmessage("VerifyMembershipReceiptAutoRenewal", "Not enabled", "Auto Payment is Enabled");
+			CommonMethod.testlog("Pass","Autopayment is not enabled");
+		}
 		
 }
