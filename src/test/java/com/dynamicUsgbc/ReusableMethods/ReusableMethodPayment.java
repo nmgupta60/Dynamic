@@ -247,8 +247,6 @@ public class ReusableMethodPayment extends BaseClass {
 		CommonMethod.testlog("Pass", "Product offered is correct");
 		CommonMethod.assertEqualsmessage("VerifyProductAmount", Amount , "Product amount is not correct");
 		CommonMethod.testlog("Pass", "Product amount is correct");
-		
-
 	}
 	
 	public void verifyPaymentSuccessful() throws IOException {
