@@ -490,6 +490,16 @@ public class CommonMethod extends BaseClass  {
 	    Assert.assertTrue(isFileDownloadedExtension(downloadPath, filename), "Failed to download Expected document");
 	} 
  
+ public static String clickRandomWebElement(String objectlocator) throws IOException {
+	 
+	 List<WebElement> allLevels = findElements(objectlocator);
+	    Random rand = new Random();
+	    int randomLevel = rand.nextInt(allLevels.size());
+	    allLevels.get(randomLevel).click();
+	 String selectedlevel = allLevels.get(randomLevel).getText();
+	 return selectedlevel;
+ }
+ 
  public static void fieldVerification(String labelLocater, String inputLocater, String LabelName, String tagName) throws IOException { 
 	 //class="col-md-7 col-xs-12 usgbc-form-input form-textarea" 
 	 //class="col-md-7 col-xs-12 usgbc-form-input form-text" 
@@ -594,16 +604,17 @@ public class CommonMethod extends BaseClass  {
     
     public static String randomNumber() throws IOException, InterruptedException{
     	
+    	 String random;
     	 int random_num = 1;
 		    Random t = new Random();
 		    
 		    // random integers in [1000, 800000]
 		    random_num=	(t.nextInt(800000));
-		    ProgramID = String.valueOf(random_num);
+		    random = String.valueOf(random_num);
 		    
-		    System.out.println(ProgramID);
+		    System.out.println(random);
 			Thread.sleep(1000);
-			return ProgramID;
+			return random;
 			
     }
    

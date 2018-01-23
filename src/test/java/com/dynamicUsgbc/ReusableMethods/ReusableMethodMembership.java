@@ -13,7 +13,7 @@ import com.dynamicUsgbc.driver.CommonMethod;
 public class ReusableMethodMembership extends BaseClass{
 
 	
-		public void newUserRegistration(String sheetName, int rowNum) throws IOException {
+		public void newUserRegistration(String sheetName, int rowNum) throws IOException, InterruptedException {
 			
 			String firstName = data.getCellData(sheetName, "FirstName", rowNum);
 			String lastName  = data.getCellData(sheetName, "LastName" , rowNum);
@@ -27,12 +27,11 @@ public class ReusableMethodMembership extends BaseClass{
 			CommonMethod.testlog("Pass", "Inputting the first name");
 			CommonMethod.sendKeys("MemberShipLastName", lastName);
 			CommonMethod.testlog("Pass", "Inputing the last name");
-			CommonMethod.click("MemberShipEmailId"); 
-			Random randomGenerator = new Random();  
-			int randomInt = randomGenerator.nextInt(10000);  
-			data.setCellData(sheetName, "Email", rowNum, "testuser"+ randomInt +"@email.com");
-			CommonMethod.testlog("Pass", "Inputiing the Random Email Id in Excel Sheet");
-			CommonMethod.sendKeys("MemberShipEmailId","testuser"+ randomInt +"@email.com");
+			CommonMethod.click("MemberShipEmailId");  
+			String random = CommonMethod.randomNumber();
+			data.setCellData(sheetName, "Email", rowNum, "testuser"+ random +"@email.com");
+			CommonMethod.testlog("Pass", "Input Random Email Id in Excel Sheet");
+			CommonMethod.sendKeys("MemberShipEmailId","testuser"+ random +"@email.com");
 			CommonMethod.testlog("Pass", "Inputting the Random Email Id");
 			CommonMethod.sendKeys("MemberShipPassword", password);
 			CommonMethod.testlog("Pass", "Inputting the Pasword");
@@ -112,18 +111,14 @@ public class ReusableMethodMembership extends BaseClass{
 			
 			CommonMethod.selectdropdown("MemberShipTerm",term );
 			CommonMethod.testlog("Pass", "Selecting the term year");
-			List<WebElement> allLevels = driver.findElements(By.xpath(".//*[@class=\"title\"]"));
-		    Random rand = new Random();
-		    int randomLevel = rand.nextInt(allLevels.size());
-		    allLevels.get(randomLevel).click();
-		    data.setCellData(sheetName, "MembershipLevel", rowNum, allLevels.get(randomLevel).getText());
-		    CommonMethod.testlog("Pass", "Entering the membership level in th excel sheet");
-		    Random randomGenerator = new Random();  
-			int randomInt = randomGenerator.nextInt(1000);  
-			data.setCellData(sheetName, "OrganizationName", rowNum, "Group"+ randomInt +"Technologies");
-			CommonMethod.testlog("Pass", "Entering the organization name in the excel sheet");
-		    CommonMethod.sendKeys("MemberShipOrganizationName", "Group"+ randomInt +"Technologies");
+			String selectedLevel = CommonMethod.clickRandomWebElement("MembershipSelectLevel");
+		    data.setCellData(sheetName, "MembershipLevel", rowNum, selectedLevel);
+		    CommonMethod.testlog("Pass", "Entering the membership level in th excel sheet"); 
+		    String random = CommonMethod.randomNumber();
+		    CommonMethod.sendKeys("MemberShipOrganizationName", "Test Organization " + random);
 			CommonMethod.testlog("Pass", "Entering the organization name ");
+			data.setCellData(sheetName, "OrganizationName", rowNum, "Test Organization " + random);
+			CommonMethod.testlog("Pass", "Entering the organization name in the excel sheet");
 			CommonMethod.selectdropdown("MemberShipCountryIncorporate",country );
 			CommonMethod.testlog("Pass", "Selecting the country incorporate Name");
 			CommonMethod.assertEqualsMessage(CommonMethod.getFirstSelectedOptionDropdown("communityCountry"), country,"Country name didn't matched");
@@ -272,12 +267,6 @@ public class ReusableMethodMembership extends BaseClass{
 			CommonMethod.testlog("Pass", "Total No of Errors are : "+Integer.toString(i));
 		}
 		
-		
-		
-		public void selectPayByCheck() throws IOException {
-			CommonMethod.click("MembershipSelectPayByCheck");
-			CommonMethod.click("MembershipClickContinueButton");
-		}
 		
 		public void VerifyReceiptMembership(int rowNum, String sheetName) throws IOException {
 			
