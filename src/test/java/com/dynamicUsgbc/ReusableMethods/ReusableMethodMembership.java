@@ -109,6 +109,17 @@ public class ReusableMethodMembership extends BaseClass{
 			
 			CommonMethod.selectdropdown("MemberShipTerm",term );
 			CommonMethod.testlog("Pass", "Selecting the term year");
+			List<WebElement> allLevels = driver.findElements(By.xpath(".//*[@class=\"title\"]"));
+		    Random rand = new Random();
+		    int randomLevel = rand.nextInt(allLevels.size());
+		    allLevels.get(randomLevel).click();
+		    data.setCellData(sheetName, "MembershipLevel", rowNum, allLevels.get(randomLevel).getText());
+		    CommonMethod.testlog("Pass", "Entering the membership level in th excel sheet");
+		    Random randomGenerator = new Random();  
+			int randomInt = randomGenerator.nextInt(1000);  
+			data.setCellData(sheetName, "OrganizationName", rowNum, "Test"+ randomInt +"Industries");
+			CommonMethod.testlog("Pass", "Entering the organization name in the excel sheet");
+		    CommonMethod.sendKeys("MemberShipOrganizationName", "Test"+ randomInt +"Industries");
 			String selectedLevel = CommonMethod.clickRandomWebElement("MembershipSelectLevel");
 		    data.setCellData(sheetName, "MembershipLevel", rowNum, selectedLevel);
 		    CommonMethod.testlog("Pass", "Entering the membership level in th excel sheet"); 
@@ -266,6 +277,11 @@ public class ReusableMethodMembership extends BaseClass{
 		}
 		
 		
+
+		
+	
+		
+
 		public void VerifyReceiptMembership(int rowNum, String sheetName) throws IOException {
 			
 			String amount      = data.getCellData(sheetName, "TotalAmount", rowNum) + ".00";
