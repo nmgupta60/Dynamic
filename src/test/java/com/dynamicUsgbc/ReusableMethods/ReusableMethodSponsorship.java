@@ -48,7 +48,7 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		CommonMethod.testlog( "Pass","Entering Address 2");
 		Thread.sleep(2000);
 		CommonMethod.sendKeys("CommunityCity", city);
-		CommonMethod.testlog( "Pass","Ebtering City Name");
+		CommonMethod.testlog( "Pass","Entering City Name");
 		CommonMethod.selectdropdown("CommunityState", state);
 		CommonMethod.testlog( "Pass","Entering State Name");
 		CommonMethod.sendKeys("CommunityZip",zip );

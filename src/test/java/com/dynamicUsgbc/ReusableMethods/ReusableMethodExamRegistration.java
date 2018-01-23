@@ -147,7 +147,7 @@ public class ReusableMethodExamRegistration extends BaseClass{
 	}
     
     
-    public void VerifyReceiptExamination(int rowNum, String sheetName) throws IOException {
+   /* public void VerifyReceiptExamination(int rowNum, String sheetName) throws IOException {
 		
     	String examType      = data.getCellData(sheetName, "ExamType", rowNum);
     	String amount      = data.getCellData(sheetName, "Amount", rowNum) + ".00";
@@ -168,5 +168,5 @@ public class ReusableMethodExamRegistration extends BaseClass{
 		CommonMethod.testlog("Pass","Expiration Date is correct");
 		
 	}
-    
+    */
 }

@@ -31,7 +31,7 @@ public class MembershipRegistrationFlowByCheckTest extends BaseClass {
 			reuse.membershipContact(memberSheet, rowNum);
 			reuse.membershipDetails(memberSheet, rowNum);
 			reusePay.verifyMembershipPaymentDetails(rowNum, memberSheet, paymentSheet,registerSheet);
-			reuse.selectPayByCheck();
+			reusePay.PaymentByCheck();
 			reuse.VerifyReceiptMembership(rowNum, memberSheet);
 			reusePay.verifyPaymentSuccessful();
 			

@@ -237,23 +237,23 @@ public class ReusableMethodPayment extends BaseClass {
 		String Offering	 = data.getCellData(sheetName, "Subscription", rowNum);
 		String Amount 	 = data.getCellData(sheetName, "SubsAmount", rowNum);
 
-		CommonMethod.assertEqualsmessage("VerifyProductOrg", OrgName, "Sponsorship Community name is not correct");
-		CommonMethod.testlog("Pass", "Sponsorship Community name is correct");
-		CommonMethod.assertEqualsmessage("VerifyProductContactEmail", ContactEmail, "SponsorType is not correct");
+		CommonMethod.assertEqualsmessage("VerifyProductOrg", OrgName, "Receipt Product Org Name is not correct");
+		CommonMethod.testlog("Pass", "Receipt Product Organization name is correct");
+		CommonMethod.assertEqualsmessage("VerifyProductContactEmail", ContactEmail, "Product Contact email is not correct");
 		CommonMethod.testlog("pass", "Sponsor type is correct");
-		CommonMethod.assertEqualsmessage("VerifyProductName", ProductName, "Event start date is not correct");
-		CommonMethod.testlog("pass", "Event start date is correct");
-		CommonMethod.assertEqualsmessage("VerifyProductOffering", Offering , "Event end date is not correct");
-		CommonMethod.testlog("Pass", "Event end date is correct");
-		CommonMethod.assertEqualsmessage("VerifyProductAmount", Amount , "Sponsorship amount is not correct");
-		CommonMethod.testlog("Pass", "Sponsorship amount is correct");
+		CommonMethod.assertEqualsmessage("VerifyProductName", ProductName, "Product Name is not correct");
+		CommonMethod.testlog("pass", "Product name is correct");
+		CommonMethod.assertEqualsmessage("VerifyProductOffering", Offering , "Product offered is not correct");
+		CommonMethod.testlog("Pass", "Product offered is correct");
+		CommonMethod.assertEqualsmessage("VerifyProductAmount", Amount , "Product amount is not correct");
+		CommonMethod.testlog("Pass", "Product amount is correct");
 		
 
 	}
 	
 	public void verifyPaymentSuccessful() throws IOException {
 		
-		CommonMethod.assertcurrentUrl(ReceiptUrl, "User is not redirected to payment page");
+		CommonMethod.assertcurrentUrl(ReceiptUrl, "User is not redirected to receipt page");
 		String ExpectedMessage = "Thank you!";
 		CommonMethod.assertcontentPageSource(ExpectedMessage,"Payment is not succesful");
 		CommonMethod.testlog("Pass","Payment made successfully");

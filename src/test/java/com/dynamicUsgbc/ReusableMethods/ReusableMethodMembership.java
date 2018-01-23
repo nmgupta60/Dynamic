@@ -120,9 +120,9 @@ public class ReusableMethodMembership extends BaseClass{
 		    CommonMethod.testlog("Pass", "Entering the membership level in th excel sheet");
 		    Random randomGenerator = new Random();  
 			int randomInt = randomGenerator.nextInt(1000);  
-			data.setCellData(sheetName, "OrganizationName", rowNum, "Group"+ randomInt +"Technologies");
+			data.setCellData(sheetName, "OrganizationName", rowNum, "Test"+ randomInt +"Industries");
 			CommonMethod.testlog("Pass", "Entering the organization name in the excel sheet");
-		    CommonMethod.sendKeys("MemberShipOrganizationName", "Group"+ randomInt +"Technologies");
+		    CommonMethod.sendKeys("MemberShipOrganizationName", "Test"+ randomInt +"Industries");
 			CommonMethod.testlog("Pass", "Entering the organization name ");
 			CommonMethod.selectdropdown("MemberShipCountryIncorporate",country );
 			CommonMethod.testlog("Pass", "Selecting the country incorporate Name");
@@ -274,10 +274,7 @@ public class ReusableMethodMembership extends BaseClass{
 		
 		
 		
-		public void selectPayByCheck() throws IOException {
-			CommonMethod.click("MembershipSelectPayByCheck");
-			CommonMethod.click("MembershipClickContinueButton");
-		}
+	
 		
 		public void VerifyReceiptMembership(int rowNum, String sheetName) throws IOException {
 			
