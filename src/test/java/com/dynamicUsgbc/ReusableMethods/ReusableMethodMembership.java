@@ -107,8 +107,6 @@ public class ReusableMethodMembership extends BaseClass{
 			String subCategory        = data.getCellData(sheetName, "SubCategory", rowNum);
 			String revenue        = data.getCellData(sheetName, "Revenue", rowNum);
 			
-			
-			
 			CommonMethod.selectdropdown("MemberShipTerm",term );
 			CommonMethod.testlog("Pass", "Selecting the term year");
 			String selectedLevel = CommonMethod.clickRandomWebElement("MembershipSelectLevel");
