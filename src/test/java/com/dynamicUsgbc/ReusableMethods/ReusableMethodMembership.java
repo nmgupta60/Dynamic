@@ -107,15 +107,10 @@ public class ReusableMethodMembership extends BaseClass{
 			String subCategory        = data.getCellData(sheetName, "SubCategory", rowNum);
 			String revenue        = data.getCellData(sheetName, "Revenue", rowNum);
 			
-			
-			
 			CommonMethod.selectdropdown("MemberShipTerm",term );
 			CommonMethod.testlog("Pass", "Selecting the term year");
-			List<WebElement> allLevels = driver.findElements(By.xpath(".//*[@class=\"title\"]"));
-		    Random rand = new Random();
-		    int randomLevel = rand.nextInt(allLevels.size());
-		    allLevels.get(randomLevel).click();
-		    data.setCellData(sheetName, "MembershipLevel", rowNum, allLevels.get(randomLevel).getText());
+			String selectedWebElement = CommonMethod.clickRandomWebElement("");
+		    data.setCellData(sheetName, "MembershipLevel", rowNum, selectedWebElement);
 		    CommonMethod.testlog("Pass", "Entering the membership level in th excel sheet");
 		    Random randomGenerator = new Random();  
 			int randomInt = randomGenerator.nextInt(1000);  
