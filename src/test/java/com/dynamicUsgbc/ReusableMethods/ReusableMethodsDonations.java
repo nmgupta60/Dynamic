@@ -59,7 +59,6 @@ public class ReusableMethodsDonations extends BaseClass{
 		String message   = data.getCellData(sheetName, "Message", rowNum);
 		
 		CommonMethod.selectdropdown("SelDonationAmt", amount);
-		CommonMethod.testlog("Pass", "Selecting the Donation Amount");
 		CommonMethod.sendKeys("DonorName", donorName);
 		CommonMethod.testlog("Pass", "Entering the Donor Name");
 		CommonMethod.sendKeys("DedicatedTo", dedicatedTo);

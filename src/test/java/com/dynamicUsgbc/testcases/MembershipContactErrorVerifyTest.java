@@ -6,6 +6,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodMembership;
+import com.dynamicUsgbc.ReusableMethods.ReusableMethodsSignIn;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
 
@@ -13,8 +14,8 @@ public class MembershipContactErrorVerifyTest extends BaseClass{
 
 	
 		@Test
-		@Parameters({"rowNum","registerSheet"})
-		public void MembershipSignUpPageErrorVerify(int rowNum, String registerSheet) throws IOException {
+		@Parameters({"rowNum","SignInSheet"})
+		public void MembershipSignUpPageErrorVerify(int rowNum, String SignInSheet) throws IOException {
 			
 			System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
 			CommonMethod.ExtentReportConfig();
@@ -22,11 +23,12 @@ public class MembershipContactErrorVerifyTest extends BaseClass{
 			CommonMethod.setUrl(MembershipUrl);
 			
 			ReusableMethodMembership reuse = new ReusableMethodMembership();
-			
+			ReusableMethodsSignIn reuseSign = new ReusableMethodsSignIn();
 			
 			try {
 				
-				reuse.newUserRegistration(registerSheet, rowNum);
+				reuse.clickSignInMembershipPage();
+				reuseSign.SignIn(rowNum, SignInSheet);
 				reuse.MembershipContactPageErrorMessageVerify();
 				
 	            } 

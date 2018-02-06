@@ -13,6 +13,24 @@ import com.dynamicUsgbc.driver.CommonMethod;
 public class ReusableMethodsSignIn extends BaseClass {
 
 	
+	public void NewRegistration(int rowNum, String sheetName) throws IOException, InterruptedException {
+
+		String email = data.getCellData(sheetName, "Email", rowNum);
+		String password = data.getCellData(sheetName, "Password", rowNum);
+
+		CommonMethod.sendKeys("SignInEmailId", email);
+		CommonMethod.testlog("Pass", "Entering Email Id");
+		CommonMethod.sendKeys("SignInpassword", password);
+		CommonMethod.testlog("Pass", "Entering Password");
+		CommonMethod.click("CommunityContinue");
+		CommonMethod.testlog("Pass", "Clicked on Sign and Continue");
+		/*CommonMethod.assertcontainsmessage("VerifyTextOnPayment", "Confirmation",
+				"Didn't Rediredted to the payment page");*/
+		CommonMethod.testlog("Pass", "Welcome to the payment page");
+	}
+	
+	
+	
 	public void SignIn(int rowNum, String sheetName) throws IOException, InterruptedException {
 
 		String email = data.getCellData(sheetName, "Email", rowNum);

@@ -35,6 +35,7 @@ public void Sponsorship(int rowNum, String sheetName) throws IOException, Interr
 		//Thread.sleep(3000);
 		CommonMethod.sendKeys("sponsorAmount", amount);
 		CommonMethod.testlog("Pass", "Entering the scholarship amount");
+		CommonMethod.moveToElement("startDate");
 		CommonMethod.click("startDate");
 		CommonMethod.sendKeys("startDate", startDate);
 		CommonMethod.testlog("Pass", "Entering the start date");

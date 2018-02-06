@@ -50,6 +50,7 @@ public class BaseClass {
 	public String StoreUrl = "/store";
 	public String ProductUrl = "/product/details";
 	public String SignInUrl = "/user/login";
+	public String NewRegistrationUrl="/signin";
 	public String MembershipUrl="/membership/contact";
 	public static String downloadPath = System.getProperty("user.dir") +"\\Download\\";
 	

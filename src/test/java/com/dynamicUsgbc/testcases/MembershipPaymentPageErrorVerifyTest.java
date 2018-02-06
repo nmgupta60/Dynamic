@@ -7,14 +7,15 @@ import org.testng.annotations.Test;
 
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodMembership;
 import com.dynamicUsgbc.ReusableMethods.ReusableMethodPayment;
+import com.dynamicUsgbc.ReusableMethods.ReusableMethodsSignIn;
 import com.dynamicUsgbc.driver.BaseClass;
 import com.dynamicUsgbc.driver.CommonMethod;
 
 public class MembershipPaymentPageErrorVerifyTest extends BaseClass{
 
 	@Test
-	@Parameters({"rowNum" ,"memberSheet","registerSheet","PaymentSheet"})
-	public void MembershipPaymentPageErrorVerify(int rowNum, String memberSheet, String registerSheet, String paymentSheet) throws IOException {
+	@Parameters({"rowNum" ,"memberSheet","SignInSheet","PaymentSheet"})
+	public void MembershipPaymentPageErrorVerify(int rowNum, String memberSheet, String SignInSheet, String paymentSheet) throws IOException {
 		
 		System.out.println(Thread.currentThread().getStackTrace()[1].getMethodName());
 		CommonMethod.ExtentReportConfig();
@@ -23,11 +24,12 @@ public class MembershipPaymentPageErrorVerifyTest extends BaseClass{
 		
 		ReusableMethodMembership reuse = new ReusableMethodMembership();
 		ReusableMethodPayment reusePay = new ReusableMethodPayment();
-		
+		ReusableMethodsSignIn reuseSign = new ReusableMethodsSignIn();
 		
 		try {
 			
-			reuse.newUserRegistration(registerSheet, rowNum);
+			reuse.clickSignInMembershipPage();
+			reuseSign.SignIn(rowNum, SignInSheet);
 			reuse.membershipContact(memberSheet, rowNum);
 			reuse.membershipDetails(memberSheet, rowNum);
 			reusePay.PaymentPageErrorMessageVerify();

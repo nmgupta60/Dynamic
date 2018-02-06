@@ -20,10 +20,12 @@
     
 
     <classes>  
-         <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>
-<!--  
+     
+      
+ 
+	  <class name="com.dynamicUsgbc.testcases.NewUserRegistrationTest"/>
       <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowTest"/>
-	  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/> 
+	 <!--  <class name="com.dynamicUsgbc.testcases.CommunityRegistrationFlowByCheckTest"/>  -->
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegLoggedInUserFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegPageErrorVerifyTest"/>
 	  <class name="com.dynamicUsgbc.testcases.CommunityRegPaymentPageErrorVerifyTest"/>  
@@ -34,26 +36,26 @@
 	  <class name="com.dynamicUsgbc.testcases.DonationOnlineUsgbcTest"/>
       <class name="com.dynamicUsgbc.testcases.DonationPaymentPageErrorVerifyTest"/>
       <class name="com.dynamicUsgbc.testcases.SponsorshipFlowTest"/> 
-      <class name="com.dynamicUsgbc.testcases.SponsorshipFlowByCheckTest"/> 
+     <!--  <class name="com.dynamicUsgbc.testcases.SponsorshipFlowByCheckTest"/>  -->
       <class name="com.dynamicUsgbc.testcases.SponsorshipRegistrationErrorVerifyTest"/>
       <class name="com.dynamicUsgbc.testcases.SponsorshipPaymentPageErrorVerifyTest"/>
       <class name="com.dynamicUsgbc.testcases.ExamRegistrationFlowTest"/>
       <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>
 	  <class name="com.dynamicUsgbc.testcases.StoreContactPageErrorVerifyTest"/>        
       <class name="com.dynamicUsgbc.testcases.StorePaymentPageErrorVerifyTest"/>
-      <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>
-      <class name="com.dynamicUsgbc.testcases.MembershipRegistrationFlowByCheckTest"/>
+      <class name="com.dynamicUsgbc.testcases.MembershipRegistrationFlowTest"/>
+     <!--  <class name="com.dynamicUsgbc.testcases.MembershipRegistrationFlowByCheckTest"/> -->
       <class name="com.dynamicUsgbc.testcases.MembershipSignUpErrorVerifyTest"/>
       <class name="com.dynamicUsgbc.testcases.MembershipRegistrationErrorVerifyTest"/>
       <class name="com.dynamicUsgbc.testcases.MembershipContactErrorVerifyTest"/>
       <class name="com.dynamicUsgbc.testcases.MembershipPaymentPageErrorVerifyTest"/>
       <class name="com.dynamicUsgbc.testcases.ProductAdminFlowTest"/> 
-      <class name="com.dynamicUsgbc.testcases.ProductAdminFlowByCheckTest"/>
+      <!-- <class name="com.dynamicUsgbc.testcases.ProductAdminFlowByCheckTest"/> -->
       <class name="com.dynamicUsgbc.testcases.ProductAdminPageErrorVerifyTest"/>
       <class name="com.dynamicUsgbc.testcases.ProductAdminPaymentPageErrorVerifyTest"/>
      
       
-   -->    
+ 
       
 
          
@@ -97,12 +99,12 @@
 	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>  -->  
 
 
-	  <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>
+	 <!--  <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>
 
 
 	  <class name="com.dynamicUsgbc.testcases.StoreFlowTest"/>  
 
-	  <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>   
+	  <class name="com.dynamicUsgbc.testcases.MembershipRegistrationTest"/>    -->
 
     </classes>
 	</test> 

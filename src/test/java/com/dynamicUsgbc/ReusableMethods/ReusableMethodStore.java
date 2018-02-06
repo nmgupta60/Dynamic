@@ -15,6 +15,7 @@ public class ReusableMethodStore extends BaseClass{
 		
 		CommonMethod.click("geenApplePins");
 		CommonMethod.testlog("Pass", "Selecting the green apple from the Shopping list");
+		CommonMethod.moveToElement("addToCart");
 		CommonMethod.click("addToCart");
 		CommonMethod.testlog("Pass", "Adding the items into the cart");
 		CommonMethod.assertcontainsmessage("cartProductItem1", "Green Apple Lapel Pins", "Item didn't added to the cart");
