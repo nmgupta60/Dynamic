@@ -33,10 +33,12 @@ public class MembershipRegistrationFlowTest extends BaseClass{
 			reuseSign.SignIn(rowNum, signinSheet);
 			reuse.membershipContact(memberSheet, rowNum);
 			reuse.membershipDetails(memberSheet, rowNum);
+			Thread.sleep(2000);
+			reuse.clickBackPage();
 			reusePay.verifyMembershipPaymentDetails(rowNum, memberSheet, paymentSheet,signinSheet);
-			reusePay.PaymentByCC(rowNum, paymentSheet);
-			reuse.VerifyReceiptMembership(rowNum, memberSheet);
-			reusePay.verifyPaymentSuccessful();
+			//reusePay.PaymentByCC(rowNum, paymentSheet);
+			//reuse.VerifyReceiptMembership(rowNum, memberSheet);
+			//reusePay.verifyPaymentSuccessful();
 			
 			
             } 

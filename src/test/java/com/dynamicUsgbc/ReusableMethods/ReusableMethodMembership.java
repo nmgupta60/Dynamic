@@ -17,6 +17,10 @@ public class ReusableMethodMembership extends BaseClass{
 			CommonMethod.click("MemberShipClickSignIn");
 			CommonMethod.testlog("Pass", "Clicking on signin button");
 		}
+		public void clickBackPage() throws IOException {
+			CommonMethod.click("MembershipBack");
+			CommonMethod.testlog("Pass","Navigating to back page");
+		}
 	
 		public void newUserRegistration(String sheetName, int rowNum) throws IOException, InterruptedException {
 			
